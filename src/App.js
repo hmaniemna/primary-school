@@ -1,15 +1,23 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home/Home';
+
 import Administration from "./pages/Administration/Administration";
+import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
+import PersonalInfoA from "./pages/Administration/PersonalInfoA/PersonalInfoA";
+import SubjectMangement from "./pages/Administration/SubjectMangement/SubjectMangement";
+import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMangement";
+import TeacherRecru from "./pages/Administration/TeacherRecru/TeacherRecru";
+import TimetableMangement from "./pages/Administration/TimetableMangement/TimetableMangement";
+import Toolbox from "./pages/Administration/Toolbox/Toolbox";
+
 import Teacher from "./pages/Teacher/Teacher";
-import ClassMangement from "./pages/ClassMangement/ClassMangement";
-import PersonalInfo from "./pages/PersonalInfo/PersonalInfo";
-import SubjectMangement from "./pages/SubjectMangement/SubjectMangement";
-import TeacherMangement from "./pages/TeacherMangement/TeacherMangement";
-import TeacherRecru from "./pages/TeacherRecru/TeacherRecru";
-import TimetableMangement from "./pages/TimetableMangement/TimetableMangement";
-import Toolbox from "./pages/Toolbox/Toolbox";
+import PersonalInfoT from './pages/Teacher/PersonalInfos/PersonalInfo';
+import Presence from './pages/Teacher/Presence/Presence';
+import Statistics from './pages/Teacher/Statistics/Statistics';
+import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement';
+import Timetable from './pages/Teacher/Timetable/Timetable';
+
 const App = () => {
     return (
     <div>
@@ -20,14 +28,20 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
-                    <Route path="/teacher" exact component={Teacher} />
-                    <Route path="/admin/infos" exact component={PersonalInfo} />
+                    <Route path="/admin/infos" exact component={PersonalInfoA} />
                     <Route path="/admin/classmanagement" exact component={ClassMangement} />
                     <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
                     <Route path="/admin/subjectmanagemnet" exact component={SubjectMangement} />
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
                     <Route path="/admin/timetablemanagemnet" exact component={TimetableMangement} />
                     <Route path="/admin/tools" exact component={Toolbox} />
+
+                    <Route path="/teacher" exact component={Teacher} />
+                    <Route path="/teacher/infos" exact component={PersonalInfoT} />
+                    <Route path="/teacher/presence" exact component={Presence} />
+                    <Route path="/teacher/stat" exact component={Statistics} />
+                    <Route path="/teacher/studentmangement" exact component={StudentMangement} />
+                    <Route path="/teacher/timetable" exact component={Timetable} />
                 </Switch>
             </div>
         </Router>
