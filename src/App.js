@@ -17,12 +17,14 @@ import Presence from './pages/Teacher/Presence/Presence';
 import Statistics from './pages/Teacher/Statistics/Statistics';
 import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement';
 import Timetable from './pages/Teacher/Timetable/Timetable';
+import LoginAdmin from "./pages/Login/LoginAdmin";
 
 const App = () => {
     return (
     <div>
         <Administration/>
         <Teacher/>
+        <LoginAdmin/>
         <Router>
             <div>
                 <Switch>
