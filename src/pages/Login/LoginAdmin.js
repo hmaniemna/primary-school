@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import classes from './LoginAdmin.module.css'
-import { Form,Button } from 'react-bootstrap';
 
 const LoginAdmin = () => {
     const [enteredEmail, setEnteredEmail] = useState('');
@@ -101,7 +100,6 @@ const LoginAdmin = () => {
           </div>
         </div>
         <div class="field">
-            
           <label>كلمة العبور</label>
           <div class="ui left icon input">
             <input type="password"/>

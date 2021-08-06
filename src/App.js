@@ -18,6 +18,7 @@ import Statistics from './pages/Teacher/Statistics/Statistics';
 import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement';
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
+import LoginTeacher from "./pages/Login/LoginTeacher";
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
         <Administration/>
         <Teacher/>
         <LoginAdmin/>
+        <LoginTeacher/>
         <Router>
             <div>
                 <Switch>
