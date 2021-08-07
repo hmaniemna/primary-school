@@ -9,7 +9,7 @@ const Home=()=>{
             <li data-target="#myCarousel" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" style="bachground-image:url(./images/slide-1.jpg);">
               <div class="container">
                 <h1>First Slide</h1>
                 <p>anything we wanna talk about here</p>
