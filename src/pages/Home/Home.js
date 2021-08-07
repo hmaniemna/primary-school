@@ -22,7 +22,7 @@ const Home=()=>{
             <div class="overlay-image" style={{backgroundImage:'url(' + Image2 + ')'}}></div>
               <div class="container">
                 <h1>إذا كنت إداري </h1>
-                <a href="./Administration" class="btn btn-lg btn-primary">
+                <a href="/Login/LoginAdmin" class="btn btn-lg btn-primary">
                 أنقر هنا
                 </a>
               </div>
@@ -31,7 +31,7 @@ const Home=()=>{
             <div class="overlay-image" style={{backgroundImage:'url(' + Image3 + ')'}}></div>
               <div class="container">
                 <h1>إذا كنت مدرس</h1>
-                <a href="./Teacher" class="btn btn-lg btn-primary">
+                <a href="/Login/LoginTeacher" class="btn btn-lg btn-primary">
                 أنقر هنا
                 </a>
               </div>
