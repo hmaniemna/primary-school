@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home/Home';
+import Header from "./components/Header/Header";
 
 import Administration from "./pages/Administration/Administration";
 import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
@@ -23,12 +24,9 @@ import LoginTeacher from "./pages/Login/LoginTeacher";
 const App = () => {
     return (
     <div>
-        <Administration/>
-        <Teacher/>
-        <LoginAdmin/>
-        <LoginTeacher/>
         <Router>
             <div>
+            <Header />
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
@@ -46,6 +44,9 @@ const App = () => {
                     <Route path="/teacher/stat" exact component={Statistics} />
                     <Route path="/teacher/studentmangement" exact component={StudentMangement} />
                     <Route path="/teacher/timetable" exact component={Timetable} />
+
+                    <Route path="/Login/LoginAdmin" exact component={LoginAdmin} />
+                    <Route path="/Login/LoginTeacher" exact component={LoginTeacher} />
                 </Switch>
             </div>
         </Router>
