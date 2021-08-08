@@ -27,7 +27,7 @@ const App = () => {
     <div>
         <Router>
             <div>
-            <Sign/>
+                <Header />
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
