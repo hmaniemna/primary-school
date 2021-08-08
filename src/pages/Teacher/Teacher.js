@@ -2,14 +2,51 @@ import React from 'react';
 import { Button} from 'semantic-ui-react'
 
 const Teacher = () => (
+
     <div>
-        <Button.Group widths='5'>
-            <Button><a href="/teacher/infos">المعلومات الشّخصيّة</a></Button>
-            <Button><a href="/teacher/studentmangement">التصرف في التلاميذ</a></Button>
-            <Button><a href="/teacher/presence"> الحضور</a></Button>
-            <Button><a href="/teacher/timetable">جدول أوقاتي</a></Button>
-            <Button><a href="/teacher/stat">إحصائيّات</a></Button>
-        </Button.Group>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="ui three column grid">
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="content">
+                        <a class="header" href="/teacher/infos" style={{ marginLeft: '5rem' }}> المعلومات الشّخصيّة</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="content">
+                        <a class="header" href="/teacher/studentmangement" style={{ marginLeft: '5rem' }}>التصرف في التلاميذ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="content">
+                        <a class="header" href="/teacher/presence" style={{ marginLeft: '7rem' }}> الحضور</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="ui two column grid">
+            
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="content">
+                        <a class="header" href="/teacher/timetable" style={{ marginLeft: '7rem' }}>جدول أوقاتي</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="content">
+                        <a class="header" href="/teacher/stat" style={{ marginLeft: '7rem' }}>إحصائيّات</a>
+                    </div>
+                </div>
+            </div>
+        </div>       
+
     </div>
 )
 
