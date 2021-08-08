@@ -1,128 +1,117 @@
-import React,{useState} from 'react';
-import classes from './LoginAdmin.module.css'
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
+
+/*function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}*/
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+ 
+  
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 const LoginAdmin = () => {
-    const [enteredEmail, setEnteredEmail] = useState('');
-    const [emailIsValid, setEmailIsValid] = useState();
-    const [enteredPassword, setEnteredPassword] = useState('');
-     const [passwordIsValid, setPasswordIsValid] = useState();     
-     const [formIsValid, setFormIsValid] = useState(false);
-     const [isLoggedIn, setIsLoggedIn] = useState(false);
-     const emailChangeHandler = (event) => {
-        setEnteredEmail(event.target.value);
-    
-        setFormIsValid(
-          event.target.value.includes("@") &&
-            event.target.value.trim().length > 0 && enteredPassword.trim().length>8); };
-    
-      const passwordChangeHandler = (event) => {
-        setEnteredPassword(event.target.value);
-    
-        setFormIsValid(
-          enteredEmail.trim().length > 8 && 
-          setEnteredEmail.includes("@") &&
-          event.target.value.trim().length > 6
-        );
-      };
-    
-      const validateEmailHandler = () => {
-      setEmailIsValid(enteredEmail.trim().length > 8 && 
-      enteredEmail.includes("@"));
-      };
-    
-      const validatePasswordHandler = () => {
-        setPasswordIsValid(enteredPassword.trim().length > 6);
-      };
-    
-      const submitHandler = (event) => {
-        event.preventDefault();
-        setIsLoggedIn(true);
-      };   
-   return(
-/*<Form>
-    <table>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-  <div className="form-row">
-  <div
-              className="col-md-4 mb-3"
-              className={`${classes.control} ${
-                emailIsValid === false ? classes.invalid : ""
-              }`}
-            >
-                   <div className="input">
-    <input type="email" 
-                id="validationCustom01"
-                onChange={emailChangeHandler}
-                onBlur={validateEmailHandler} />
-                </div>
-    </div>
-    <label>البريد الإلكتروني</label>
- 
-    </div>
-  </Form.Group>
+  const classes = useStyles();
 
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-  <div className="form-row">
-  <div
-              className="col-md-4 mb-3"
-              className={`${classes.control} ${
-                passwordIsValid === false ? classes.invalid : ""
-              }`}
-            >
-                 <div className="label">
-    <label>كلــمة العبـور</label>
-   
-    </div>
-   
-    <div className="input">
-    <input  type="password"  
-                id="validationCustom01"
-                onChange={passwordChangeHandler}
-                onBlur={validatePasswordHandler} />
-                </div>
-    </div>
-    </div>
-  </Form.Group>
- 
-  <button class="ui button" type="submit">دخــول</button>
-  </table>
-</Form> */
-<div class="ui placeholder segment">
-  <div class="ui two column very relaxed stackable grid">
-    <div class="column">
-      <div class="ui form">
-        <div class="field">
-          <label>البريد الإلكتروني</label>
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="body">
+          تسجيل الدخول
+        </Typography>
+        <form className={classes.form} noValidate>
+            
+          <TextField 
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="البريد الإلكتروني"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
+            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+          />
+          <TextField
+            className=""
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="كلمة العبور"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
+            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+          />
+        
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            دخول
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body">
+                هل نسيت كلمة العبور؟
+              </Link>
+            </Grid>
           
-          <div class="ui left icon input">
-            <input type="text" />
-            <i class="user icon"></i>
-          </div>
-        </div>
-        <div class="field">
-          <label>كلمة العبور</label>
-          <div class="ui left icon input">
-            <input type="password"/>
-            <i class="lock icon"></i>
-          </div>
-        </div>
-        <button class="ui button" type="submit">دخــول</button>
+          </Grid>
+        </form>
       </div>
-    </div>
-    <div class="middle aligned column">
-      <div class="ui big button">
-        <i class="signup icon"></i>
-        أنشِئ حسابًا
-      </div>
-    </div>
-  </div>
-  <div class="ui vertical divider">
-     
-     </div>
-</div>
-
-
-);
-};
+    </Container>
+  );
+}
 
 export default LoginAdmin;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button} from 'semantic-ui-react'
+
 
 const Teacher = () => (
 
@@ -9,21 +9,21 @@ const Teacher = () => (
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/infos" style={{ marginLeft: '5rem' }}> المعلومات الشّخصيّة</a>
+                        <a class="header" href="/teacher/infos" style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}> المعلومات الشّخصيّة</a>
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/studentmangement" style={{ marginLeft: '5rem' }}>التصرف في التلاميذ</a>
+                        <a class="header" href="/teacher/studentmangement" style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}>التصرف في التلاميذ</a>
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/presence" style={{ marginLeft: '7rem' }}> الحضور</a>
+                        <a class="header" href="/teacher/presence" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}> الحضور</a>
                     </div>
                 </div>
             </div>
@@ -34,14 +34,14 @@ const Teacher = () => (
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/timetable" style={{ marginLeft: '7rem' }}>جدول أوقاتي</a>
+                        <a class="header" href="/teacher/timetable" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}>جدول أوقاتي</a>
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/stat" style={{ marginLeft: '7rem' }}>إحصائيّات</a>
+                        <a class="header" href="/teacher/stat" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}>إحصائيّات</a>
                     </div>
                 </div>
             </div>
