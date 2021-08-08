@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Header.css";
@@ -12,6 +13,7 @@ const Header =()=>{
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -31,8 +33,8 @@ const Header =()=>{
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
-        <li class="nav-right dropdown">
+        <li class="nav-item dropdown"/>
+        <li class="nav-right dropdown"/>
 
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           الإدارة
@@ -46,17 +48,16 @@ const Header =()=>{
             <li><a class="dropdown-item" href="/admin/timetablemanagemnet">التّصرّف في جدول الأوقات</a></li>
             <li><a class="dropdown-item" href="/admin/tools">صندوق الأدوات</a></li>
           </ul>
-        </li>
-        </ul>
-      <form class="d-flex">
-        <a href="/pages/SignIn/SignIn" class="btn btn-outline-success" type="submit"> دخول</a>
         
-
+       
+      <form class="d-flex">
+        <a href="/pages/SignIn/SignIn" class="btn btn-outline-success" type="submit"> دخول
+      </a>
       </form>
     </div>
   </div>
 </nav>
 
   )
-}
-export default Header;
+};
+export default Header; */

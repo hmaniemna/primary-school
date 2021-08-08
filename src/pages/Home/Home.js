@@ -15,7 +15,7 @@ const Home=()=>{
             <div class="carousel-item active">
               <div class="overlay-image" style={{backgroundImage:'url(' + Image1 + ')'}}></div>
               <div class="container">
-                <h1>مرحبا بك في الصفحة الخاصة بالإدارة لمدرستنا الإبتدائيّة</h1>
+                <h1>مرحبا بك في الصفحة الخاصة بمدرستنا الإبتدائيّة</h1>
               </div>
             </div>
             <div class="carousel-item ">
