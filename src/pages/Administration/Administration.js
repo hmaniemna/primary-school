@@ -1,19 +1,69 @@
 import React from 'react';
-import { Button} from 'semantic-ui-react';
 
 const Administration = () => (
     <div>
-        <Button.Group widths='7'>
-            <Button><a href="/admin/infos">المعلومات الشّخصيّة</a></Button>
-            <Button><a href="/admin/teachermanagemnet">التصرف في المدرسين</a></Button>
-            <Button><a href="/admin/classmanagement">التصرف في الأقسام</a></Button>
-            <Button><a href="/admin/subjectmanagemnet">التّصرّف في المواد</a></Button>
-            <Button><a href="/admin/teacherrecru">تعيين المدرّسين</a></Button>
-            <Button><a href="/admin/timetablemanagemnet">التّصرّف في جدول الأوقات</a></Button>
-            <Button><a href="/admin/tools"> صندوق الأدوات</a></Button>
-        </Button.Group> 
+        <br/><br/><br/>
+        <div class="ui three column grid">
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <a class="header" href="/admin/infos" style={{ marginLeft: '8rem' }}> المعلومات الشّخصيّة</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <a class="header" href="/admin/teachermanagemnet" style={{ marginLeft: '8rem' }}>التصرف في المدرسين</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <a class="header" href="/admin/classmanagement" style={{ marginLeft: '8rem' }}>التصرف في الأقسام</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/><br/><br/> <br/><br/><br/>
+        <div class =" ui one column grid">
+            <div class="column">
+            </div>
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="content" >
+                        <a class="header" href="/admin/subjectmanagemnet" style={{ marginLeft: '6rem' }}>التّصرّف في المواد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="ui three column grid">
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <a class="header" href="/admin/teacherrecru" style={{ marginLeft: '8rem' }}>تعيين المدرّسين</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <a class="header" href="/admin/teachermanagemnet" style={{ marginLeft: '8rem' }}>التّصرّف في جدول الأوقات </a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <a class="header" href="/admin/tools" style={{ marginLeft: '9rem' }}>صندوق الأدوات</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
 
 )
 export default Administration;
