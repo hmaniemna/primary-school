@@ -20,14 +20,19 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
+import Sign from "./pages/Login/Sign";
 
 const App = () => {
     return (
     <div>
         <Router>
             <div>
+<<<<<<< HEAD
                 <Administration/>
             <Header />
+=======
+            <Header/>
+>>>>>>> 78adcab12f46e17d6bb3f4fc06704395ffffd229
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
