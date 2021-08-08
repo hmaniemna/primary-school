@@ -20,7 +20,7 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
-//import Sign from "./pages/Login/Sign";
+import Sign from "./pages/Login/Sign";
 
 const App = () => {
     return (

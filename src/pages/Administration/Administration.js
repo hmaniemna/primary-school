@@ -13,5 +13,7 @@ const Administration = () => (
             <Button><a href="/admin/tools"> صندوق الأدوات</a></Button>
         </Button.Group> 
     </div>
+    
+
 )
 export default Administration;
