@@ -129,6 +129,7 @@ const handleSubmit = (event) => {
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
+          <br/><br/>
           <div className="radioLeft">
           <FormControl component="fieldset" error={error}>
             <FormLabel  component="legend">الجنس</FormLabel>
