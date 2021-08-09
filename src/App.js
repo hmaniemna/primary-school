@@ -4,10 +4,18 @@ import Home from './pages/Home/Home';
 import Header from "./components/Header/Header";
 
 import Administration from "./pages/Administration/Administration";
+
 import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
+import AddC from "./pages/Administration/ClassMangement/AddC/AddC";
+
 import PersonalInfoA from "./pages/Administration/PersonalInfoA/PersonalInfoA";
+
 import SubjectMangement from "./pages/Administration/SubjectMangement/SubjectMangement";
+import AddSub from "./pages/Administration/SubjectMangement/AddSub/AddSub";
+
 import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMangement";
+import AddT from "./pages/Administration/TeacherMangement/AddT/AddT";
+
 import TeacherRecru from "./pages/Administration/TeacherRecru/TeacherRecru";
 import TimetableMangement from "./pages/Administration/TimetableMangement/TimetableMangement";
 import Toolbox from "./pages/Administration/Toolbox/Toolbox";
@@ -20,15 +28,17 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
-import Sign from "./pages/Login/Sign";
+
 
 const App = () => {
     return (
     <div>
+        <AddSub/>
+        <AddC/>
+        <AddT/>
+        <Administration/>
         <Router>
             <div>
-                <Administration/>
-            <Header />
             <Header/>
                 <Switch>
                     <Route path="/" exact component={Home} />
