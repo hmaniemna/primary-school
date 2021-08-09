@@ -16,6 +16,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import './AddT.css'
 
       
 function RadioButtonsGroup() {
@@ -75,7 +76,7 @@ const handleSubmit = (event) => {
         <Typography component="h1" variant="body">
            إضافة المعلمين   
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
             
           <TextField 
             margin="normal"
@@ -128,31 +129,32 @@ const handleSubmit = (event) => {
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
-        <form onSubmit={handleSubmit}>
+          <div className="radioLeft">
           <FormControl component="fieldset" error={error}>
-            <FormLabel component="legend">الجنس</FormLabel>
-                <RadioGroup row aria-label="gender" name="gender1" value={value} onChange={handleRadioChange} >
+            <FormLabel  component="legend">الجنس</FormLabel>
+                <RadioGroup  className="radioLeft" row aria-label="gender" name="gender1" value={value} onChange={handleRadioChange}  >
                     <FormControlLabel 
+                  
                         value="female" 
                         control={<Radio color="grey" />} 
                         labelPlacement="start" 
                         label="أنثى" 
                     />
                     <FormControlLabel 
+                
                         value="male" 
                         control={<Radio color="grey"/>} 
+                        
                         labelPlacement="start" 
                         label="ذكر"
+                        inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                     />
-                    <FormControlLabel 
-                        value="other" 
-                        control={<Radio color="grey"/>} 
-                        labelPlacement="start" 
-                        label="آخر" 
-                    />
+        
                 </RadioGroup>
           </FormControl>
-        
+          </div>
+          </form>
+      
           <Button
             type="submit"
             fullWidth
@@ -162,8 +164,8 @@ const handleSubmit = (event) => {
           >
             اضافة
           </Button>
-        </form>
-        </form>
+      
+        
       </div>
       <Box mt={8}>
         
