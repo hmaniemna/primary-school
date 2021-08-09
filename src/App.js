@@ -7,7 +7,10 @@ import Administration from "./pages/Administration/Administration";
 import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
 import PersonalInfoA from "./pages/Administration/PersonalInfoA/PersonalInfoA";
 import SubjectMangement from "./pages/Administration/SubjectMangement/SubjectMangement";
+
 import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMangement";
+import AddT from "./pages/Administration/TeacherMangement/AddT/AddT";
+
 import TeacherRecru from "./pages/Administration/TeacherRecru/TeacherRecru";
 import TimetableMangement from "./pages/Administration/TimetableMangement/TimetableMangement";
 import Toolbox from "./pages/Administration/Toolbox/Toolbox";
@@ -25,6 +28,8 @@ import LoginTeacher from "./pages/Login/LoginTeacher";
 const App = () => {
     return (
     <div>
+        <Header/>
+        <AddT/>
         <Router>
             <div>
                 <Switch>
