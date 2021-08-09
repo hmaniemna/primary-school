@@ -27,12 +27,9 @@ const App = () => {
     <div>
         <Router>
             <div>
-<<<<<<< HEAD
                 <Administration/>
             <Header />
-=======
             <Header/>
->>>>>>> 78adcab12f46e17d6bb3f4fc06704395ffffd229
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
