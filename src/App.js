@@ -33,10 +33,6 @@ import LoginTeacher from "./pages/Login/LoginTeacher";
 const App = () => {
     return (
     <div>
-        <AddSub/>
-        <AddC/>
-        <AddT/>
-        <Administration/>
         <Router>
             <div>
             <Header/>
