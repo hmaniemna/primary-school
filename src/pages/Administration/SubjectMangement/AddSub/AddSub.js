@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 //import Link from '@material-ui/core/Link';
 //import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -16,7 +16,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import './AddT.css'
+import './AddSub.css'
 
       
 function RadioButtonsGroup() {
@@ -74,86 +74,36 @@ const handleSubmit = (event) => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="body">
-           إضافة المعلمين   
+           إضافة الأقسام   
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            
-          <TextField 
+                      
+        <TextField 
             margin="normal"
             required
             fullWidth
-            id="firstname"
-            label="الاسم"
-            name="firstname"
-            autoComplete="firstname"
+            id="level"
+            label="المستوى"
+            name="level"
+            autoComplete="level"
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
           <TextField
             className=""
-            margin="normal"
+            margin="libel"
             required
             fullWidth
-            name="lastname"
-            label="اللقب"
-            type="lastname"
-            id="lastname"
-            autoComplete="lastname"
-            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
-          <TextField
-            className=""
-            margin="normal"
-            required
-            fullWidth
-            name="username"
-            label="اسم المستخدم"
-            type="username"
-            id="username"
-            autoComplete="username"
-            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
-          <TextField
-            className=""
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="كلمة العبور"
-            type="password"
-            id="password"
-            autoComplete="current-password"
+            name="libel"
+            label="إسم المادة "
+            type="libel"
+            id="libel"
+            autoComplete="libel"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
           <br/><br/>
-          <div className="radioLeft">
-          <FormControl component="fieldset" error={error}>
-            <FormLabel  component="legend">الجنس</FormLabel>
-                <RadioGroup  className="radioLeft" row aria-label="gender" name="gender1" value={value} onChange={handleRadioChange}  >
-                    <FormControlLabel 
-                  
-                        value="female" 
-                        control={<Radio color="grey" />} 
-                        labelPlacement="start" 
-                        label="أنثى" 
-                    />
-                    <FormControlLabel 
-                
-                        value="male" 
-                        control={<Radio color="grey"/>} 
-                        
-                        labelPlacement="start" 
-                        label="ذكر"
-                        inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                    />
-        
-                </RadioGroup>
-          </FormControl>
-          </div>
           </form>
       
           <Button

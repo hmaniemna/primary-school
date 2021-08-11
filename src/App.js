@@ -4,9 +4,14 @@ import Home from './pages/Home/Home';
 import Header from "./components/Header/Header";
 
 import Administration from "./pages/Administration/Administration";
+
 import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
+import AddC from "./pages/Administration/ClassMangement/AddC/AddC";
+
 import PersonalInfoA from "./pages/Administration/PersonalInfoA/PersonalInfoA";
+
 import SubjectMangement from "./pages/Administration/SubjectMangement/SubjectMangement";
+import AddSub from "./pages/Administration/SubjectMangement/AddSub/AddSub";
 
 import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMangement";
 import AddT from "./pages/Administration/TeacherMangement/AddT/AddT";
@@ -28,10 +33,13 @@ import LoginTeacher from "./pages/Login/LoginTeacher";
 const App = () => {
     return (
     <div>
-        <Header/>
+        <AddSub/>
+        <AddC/>
         <AddT/>
+        <Administration/>
         <Router>
             <div>
+            <Header/>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
