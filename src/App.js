@@ -23,11 +23,11 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
-
+import Hello from "./components/hello";
 
 const App = () => {
     return (
-    <div>
+    /*<div>
         <Header/>
         <AddT/>
         <Router>
@@ -55,7 +55,8 @@ const App = () => {
                 </Switch>
             </div>
         </Router>
-    </div>
+    </div>*/
+    <Hello/>
     );
 
 };

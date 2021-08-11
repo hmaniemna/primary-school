@@ -16,6 +16,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import { Navbar,NavDropdown,Nav } from "react-bootstrap"
+
 import './AddT.css'
 
       
@@ -103,6 +105,7 @@ const handleSubmit = (event) => {
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
+
           <TextField
             className=""
             margin="normal"
@@ -129,30 +132,10 @@ const handleSubmit = (event) => {
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
-          <div className="radioLeft">
-          <FormControl component="fieldset" error={error}>
-            <FormLabel  component="legend">الجنس</FormLabel>
-                <RadioGroup  className="radioLeft" row aria-label="gender" name="gender1" value={value} onChange={handleRadioChange}  >
-                    <FormControlLabel 
-                  
-                        value="female" 
-                        control={<Radio color="grey" />} 
-                        labelPlacement="start" 
-                        label="أنثى" 
-                    />
-                    <FormControlLabel 
-                
-                        value="male" 
-                        control={<Radio color="grey"/>} 
-                        
-                        labelPlacement="start" 
-                        label="ذكر"
-                        inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                    />
-        
-                </RadioGroup>
-          </FormControl>
-          </div>
+          
+
+      
+
           </form>
       
           <Button
@@ -165,7 +148,6 @@ const handleSubmit = (event) => {
             اضافة
           </Button>
       
-        
       </div>
       <Box mt={8}>
         
