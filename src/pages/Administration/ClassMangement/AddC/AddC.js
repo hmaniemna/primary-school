@@ -39,13 +39,18 @@ const AddT = () => {
   const [name,setName]=useState('');
   const [level,setlevel]=useState();
   const [number,setNumber]=useState('');
-  
+  const [classList, setClassList]=useState([]);
 
+  useEffect(()=>{
+    Axios.get("http://localhost:3000/api/get").then((response)=>{
+      setClassList(response.data)
+    })
+  },[])
   const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
       name:name,level:level,number:number
     }).then(()=>{
-      console.log('plz')
+
       alert('Succ insert!')
     })
   }
@@ -58,23 +63,6 @@ const AddT = () => {
         </Typography>
         <form className={classes.form} noValidate>
 
-          <TextField
-            className=""
-            margin="normal"
-            required
-            fullWidth
-            name="name"
-            label="إسم القسم"
-            type="name"
-            id="name"
-            autoComplete="name"
-            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-            onChange={(e)=>{
-              setName(e.target.value)
-            }}
-          />
-                      
         <TextField 
             margin="normal"
             required
@@ -95,15 +83,30 @@ const AddT = () => {
             margin="normal"
             required
             fullWidth
-            name="number"
-            label="عدد التلاميذ"
-            type="number"
-            id="number"
-            autoComplete="number"
+            name="name"
+            label="إسم القسم"
+            type="name"
+            id="name"
+            autoComplete="name"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
             onChange={(e)=>{
-              console.log(number)
+              setName(e.target.value)
+            }}
+          />
+                      
+          <TextField 
+            margin="normal"
+            required
+            fullWidth
+            id="number"
+            label="عدد التلاميذ"
+            name="number"
+            autoComplete="number"
+            autoFocus
+            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
+            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={(e)=>{
               setNumber(e.target.value)
             }}
           />
@@ -121,7 +124,9 @@ const AddT = () => {
             اضافة
           </Button>
       
-        
+        {classList.map((val)=>{
+          return <h1>Level: {val.niveau} | Name : {val.nom} | Number : {val.nb} </h1>
+        })}
       </div>
       <Box mt={8}>
         
