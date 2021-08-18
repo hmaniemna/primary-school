@@ -41,8 +41,11 @@ const App = () => {
                     <Route path="/admin" exact component={Administration} />
                     <Route path="/admin/infos" exact component={PersonalInfoA} />
                     <Route path="/admin/classmanagement" exact component={ClassMangement} />
+                    <Route path='/admin/teachermanagemnet/addc' exact component={AddC}/>
                     <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
+                    <Route path='/admin/teachermanagemnet/addt' exact component={AddT}/>
                     <Route path="/admin/subjectmanagemnet" exact component={SubjectMangement} />
+                    <Route path='/admin/teachermanagemnet/addsub' exact component={AddSub}/>
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
                     <Route path="/admin/timetablemanagemnet" exact component={TimetableMangement} />
                     <Route path="/admin/tools" exact component={Toolbox} />
