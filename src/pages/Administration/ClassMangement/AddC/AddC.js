@@ -32,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
-
+})); 
 const AddT = () => {
   const classes = useStyles();
   const [name,setName]=useState('');
@@ -119,14 +118,10 @@ const AddT = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={submitClass}
+            onClick={{submitClass}}
           >
             اضافة
           </Button>
-      
-        {classList.map((val)=>{
-          return <h1>Level: {val.niveau} | Name : {val.nom} | Number : {val.nb} </h1>
-        })}
       </div>
       <Box mt={8}>
         

@@ -40,7 +40,7 @@ const App = () => {
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
                     <Route path="/admin/infos" exact component={PersonalInfoA} />
-                    <Route path="/admin/classmanagement" exact component={ClassMangement} />
+                    <Route path="/admin/classmanagemnet" exact component={ClassMangement} />
                     <Route path='/admin/classmanagemnet/addc' exact component={AddC}/>
                     <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
                     <Route path='/admin/teachermanagemnet/addt' exact component={AddT}/>
