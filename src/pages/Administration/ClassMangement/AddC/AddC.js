@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
 import './AddC.css'
+//import ClassMangement from '../ClassMangement';
 
 
 
@@ -33,19 +34,14 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 })); 
-const AddT = () => {
+const AddT = (props) => {
   const classes = useStyles();
   const [id,setID]=useState('');
   const [name,setName]=useState('');
   const [level,setlevel]=useState();
   const [number,setNumber]=useState('');
-  const [classList, setClassList]=useState([]);
+  const {setOpenPopup}=props;
 
-  useEffect(()=>{
-    Axios.get("http://localhost:3000/api/get").then((response)=>{
-      setClassList(response.data)
-    })
-  },[])
   const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
       id:id,name:name,level:level,number:number
@@ -119,7 +115,15 @@ const AddT = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+<<<<<<< HEAD
             onClick={submitClass}
+=======
+            onClick={()=>{
+              setOpenPopup(false)
+              submitClass()
+              
+            }}
+>>>>>>> 2c0b3e2783db02c56b015826c9e8d82209dfd234
           >
             اضافة
           </Button>

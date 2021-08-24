@@ -9,7 +9,7 @@ const useStyles= makeStyles(theme=>({
         top: theme.spacing(5)
     }
 }))
-export default function(props){
+export default function Popup(props){
     const {title, children, openPopup, setOpenPopup}=props;
     const classes=useStyles;
 
