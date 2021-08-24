@@ -43,11 +43,12 @@ const headCells=[
 
 const ClassMangement = () => {
   const classes = useStyles();
-  const [name,setName]=useState('');
-  const [level,setlevel]=useState();
-  const [number,setNumber]=useState('');
   const [classList, setClassList]=useState([]);
   const [openPopup,setOpenPopup]=useState(false);
+
+  const submitAction=()=>{
+    setClassList([...classList,{nom:AddC.name,niveau:AddC.level,nb:AddC.number,anneescolaire:AddC.an}])
+  }
 
   const {
       TblContainer,
@@ -59,14 +60,6 @@ const ClassMangement = () => {
       setClassList(response.data)
     })
   },[])
-  const submitClass=()=>{
-    Axios.post('http://localhost:3000/api/insert',{
-      name:name,level:level,number:number
-    }).then(()=>{
-
-      alert('Succ insert!')
-    })
-  }
   return (
     <div>
         <Button class="ui right floated blue basic button" onClick={()=> setOpenPopup(true)}>اضافة الاقسام</Button>
@@ -94,7 +87,7 @@ const ClassMangement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
-            <AddC/>
+            <AddC setOpenPopup={setOpenPopup}/>
       </Popup>
     </div>
   );
