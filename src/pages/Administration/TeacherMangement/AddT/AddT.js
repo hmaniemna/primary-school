@@ -1,5 +1,7 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import React,{useState,useEffect} from 'react';
+import Axios from 'axios';
+import TeacherManagement from '../TeacherMangement';
+//import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,7 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 //import Link from '@material-ui/core/Link';
 //import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -21,13 +23,13 @@ import { Navbar,NavDropdown,Nav } from "react-bootstrap"
 import './AddT.css'
 
       
-function RadioButtonsGroup() {
+/*function RadioButtonsGroup() {
     const [value, setValue] = React.useState('female');
   
     const handleChange = (event) => {
       setValue(event.target.value);
     };
-}
+}*/
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -51,9 +53,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = () => {
+const AddT = (props) => {
+  const [firstName,setFirstName] = useState('');
+  const [lastName,setLastName] = useState('');
+  const [userName,setUserName] = useState('');
+  const [password,setPassword] = useState('');
+  const [gender,setGender] = useState('female');
+  const [teacherList,setTeacherList] = useState([]);
+  useEffect(()=>{
+    Axios.get("http://localhost:3000/getTeachers").then((response)=>{
+      setTeacherList(response.data);
+    });
+  },[]);
+  const registerTeacher = () => {
+    Axios.post("http://localhost:3000/register",{
+     genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
+  });
+  props.onAddTeacher(firstName,lastName,userName);
+    /*setTeacherList([...teacherList,
+      {genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password},
+    ]); */
+  };
+  const firstNameChangeHandler = (e) =>{
+    
+    setFirstName(e.target.value);
+   
+  };
+  const lastNameChangeHandler = (e) =>{
+    setLastName(e.target.value);
+  };
+  const userNameChangeHandler = (e) =>{
+    setUserName(e.target.value);
+  };
+  const passwordChangeHandler = (e) =>{
+  
+    setPassword(e.target.value);
+  };
+  const genderChangeHandler = (e) =>{
+    setGender(e.target.value);
+  };
+
   const classes = useStyles();
-  const [value, setValue] = React.useState('');
+ /* const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('');
   const handleRadioChange = (event) => {
@@ -70,7 +111,7 @@ const handleSubmit = (event) => {
       setError(true);
     }
 };
-
+*/
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -78,7 +119,7 @@ const handleSubmit = (event) => {
         <Typography component="h1" variant="body">
            إضافة المعلمين   
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate >
             
           <TextField 
             margin="normal"
@@ -91,6 +132,7 @@ const handleSubmit = (event) => {
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={firstNameChangeHandler}
           />
           <TextField
             className=""
@@ -104,7 +146,8 @@ const handleSubmit = (event) => {
             autoComplete="lastname"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
+            onChange={lastNameChangeHandler}
+         />
 
           <TextField
             className=""
@@ -118,7 +161,8 @@ const handleSubmit = (event) => {
             autoComplete="username"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
+            onChange={userNameChangeHandler}
+         />
           <TextField
             className=""
             margin="normal"
@@ -131,11 +175,34 @@ const handleSubmit = (event) => {
             autoComplete="current-password"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={passwordChangeHandler}
           />
-          
 
-      
-
+          <br/><br/>
+          <div className="radioLeft">
+          <FormControl component="fieldset" >
+            <FormLabel  component="legend">الجنس</FormLabel>
+                <RadioGroup  className="radioLeft" row aria-label="gender" name="gender1" value={gender} onChange={genderChangeHandler}  >
+                    <FormControlLabel 
+                  
+                        value="female" 
+                        control={<Radio color="grey" />} 
+                        labelPlacement="start" 
+                        label="أنثى" 
+                    />
+                    <FormControlLabel 
+                
+                        value="male" 
+                        control={<Radio color="grey"/>} 
+                        
+                        labelPlacement="start" 
+                        label="ذكر"
+                        inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+                    />
+        
+                </RadioGroup>
+          </FormControl>
+          </div>
           </form>
       
           <Button
@@ -144,15 +211,24 @@ const handleSubmit = (event) => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={registerTeacher}
           >
             اضافة
           </Button>
       
       </div>
       <Box mt={8}>
-        
       </Box>
+      
+      {teacherList.map((v) => 
+      { return (
+        <h3>
+        Nom: {v.nom} | Prenom : {v.prenom} | Login:{v.login} | mdp:{v.mdp} | genre:{v.genre}
+        </h3>
+      );
+    })}
     </Container>
+
   );
 }
 

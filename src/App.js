@@ -1,12 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from "./components/Header/Header";
 
 import Administration from "./pages/Administration/Administration";
+
 import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
+import AddC from "./pages/Administration/ClassMangement/AddC/AddC";
+
 import PersonalInfoA from "./pages/Administration/PersonalInfoA/PersonalInfoA";
+
 import SubjectMangement from "./pages/Administration/SubjectMangement/SubjectMangement";
+import AddSub from "./pages/Administration/SubjectMangement/AddSub/AddSub";
 
 import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMangement";
 import AddT from "./pages/Administration/TeacherMangement/AddT/AddT";
@@ -26,18 +31,26 @@ import LoginTeacher from "./pages/Login/LoginTeacher";
 import Hello from "./components/hello";
 
 const App = () => {
+    const [teacherList,setTeacherList] = useState([]);
+   const  addTeacherHandler = (firstName,lastName,userName) => {
+        setTeacherList((previousTeList)=>{
+            return[...previousTeList,{prenom:firstName,nom:lastName,login:userName}]
+        });
+    };
     return (
-    /*<div>
-        <Header/>
-        <AddT/>
+   <div>
+     
         <Router>
             <div>
+            <Header/>
+            <AddT onAddTeacher={addTeacherHandler}/>
+            <TeacherMangement teachers={[teacherList]}/>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
                     <Route path="/admin/infos" exact component={PersonalInfoA} />
                     <Route path="/admin/classmanagement" exact component={ClassMangement} />
-                    <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
+                 
                     <Route path="/admin/subjectmanagemnet" exact component={SubjectMangement} />
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
                     <Route path="/admin/timetablemanagemnet" exact component={TimetableMangement} />
@@ -55,9 +68,10 @@ const App = () => {
                 </Switch>
             </div>
         </Router>
-    </div>*/
-    <Hello/>
+    </div>
+    
     );
 
 };
+
 export default App;

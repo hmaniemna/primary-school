@@ -34,10 +34,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -61,7 +57,7 @@ const LoginAdmin = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="body">
-          تسجيل الدخول
+      تسجيل دخـول الإداريــيــن
         </Typography>
         <form className={classes.form} noValidate>
             

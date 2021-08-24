@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -34,11 +34,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -51,6 +46,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginTeacher = () => {
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const emailChangeHandler = (e) =>{
+    setEmail(e.target.value);
+  };
+  const passwordChangeHandler = (e) =>{
+    setPassword(e.target.value);
+  };
+
+
   const classes = useStyles();
 
   return (
@@ -61,7 +66,7 @@ const LoginTeacher = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="body">
-          تسجيل الدخول
+          تسجيل دخــول المعلميـــن
         </Typography>
         <form className={classes.form} noValidate>
             
@@ -76,6 +81,7 @@ const LoginTeacher = () => {
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={emailChangeHandler}
           />
           <TextField
             className=""
@@ -89,7 +95,8 @@ const LoginTeacher = () => {
             autoComplete="current-password"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
+            onChange={passwordChangeHandler}
+         />
         
           <Button
             type="submit"

@@ -1,32 +1,31 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+//import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+//import Checkbox from '@material-ui/core/Checkbox';
+//import Link from '@material-ui/core/Link';
+//import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import './Sign.css';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import './AddSub.css'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+      
+function RadioButtonsGroup() {
+    const [value, setValue] = React.useState('female');
+  
+    const handleChange = (event) => {
+      setValue(event.target.value);
+    };
 }
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -50,47 +49,63 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Sign = () => {
+const AddT = () => {
   const classes = useStyles();
+  const [value, setValue] = React.useState('');
+  const [error, setError] = React.useState(false);
+  const [helperText, setHelperText] = React.useState('');
+  const handleRadioChange = (event) => {
+    setValue(event.target.value);
+    setHelperText(' ');
+    setError(false);
+  };
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!value) {
+      setHelperText('الرجاء تحديد خيار');
+      setError(true);
+    }
+};
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="body">
-          تسجيل الدخول
+           إضافة المــواد   
         </Typography>
-        <form className={classes.form} noValidate>
-            
-          <TextField 
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                      
+        <TextField 
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="البريد الإلكتروني"
-            name="email"
-            autoComplete="email"
+            id="level"
+            label="المستوى"
+            name="level"
+            autoComplete="level"
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
           <TextField
             className=""
-            margin="normal"
+            margin="libel"
             required
             fullWidth
-            name="password"
-            label="كلمة العبور"
-            type="password"
-            id="password"
-            autoComplete="current-password"
+            name="libel"
+            label="إسم المادة "
+            type="libel"
+            id="libel"
+            autoComplete="libel"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           />
-        
+          <br/><br/>
+          </form>
+      
           <Button
             type="submit"
             fullWidth
@@ -98,23 +113,16 @@ const Sign = () => {
             color="primary"
             className={classes.submit}
           >
-            دخول
+            اضافة
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body">
-                هل نسيت كلمة العبور؟
-              </Link>
-            </Grid>
-          
-          </Grid>
-        </form>
+      
+        
       </div>
       <Box mt={8}>
-        <Copyright />
+        
       </Box>
     </Container>
   );
 }
 
-export default Sign;
+export default AddT;
