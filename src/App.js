@@ -31,27 +31,23 @@ import LoginTeacher from "./pages/Login/LoginTeacher";
 import Hello from "./components/hello";
 
 const App = () => {
-    const [teacherList,setTeacherList] = useState([]);
-   const  addTeacherHandler = (firstName,lastName,userName) => {
-        setTeacherList((previousTeList)=>{
-            return[...previousTeList,{prenom:firstName,nom:lastName,login:userName}]
-        });
-    };
     return (
-   <div>
-     
+    <div>
+
         <Router>
             <div>
             <Header/>
-            <AddT onAddTeacher={addTeacherHandler}/>
-            <TeacherMangement teachers={[teacherList]}/>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
                     <Route path="/admin/infos" exact component={PersonalInfoA} />
                     <Route path="/admin/classmanagement" exact component={ClassMangement} />
-                 
+                    <Route path="/admin/classmanagemnet" exact component={ClassMangement} />
+                    <Route path='/admin/classmanagemnet/addc' exact component={AddC}/>
+                    <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
+                    <Route path='/admin/teachermanagemnet/addt' exact component={AddT}/>
                     <Route path="/admin/subjectmanagemnet" exact component={SubjectMangement} />
+                    <Route path='/admin/subjectmanagemnet/addsub' exact component={AddSub}/>
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
                     <Route path="/admin/timetablemanagemnet" exact component={TimetableMangement} />
                     <Route path="/admin/tools" exact component={Toolbox} />
