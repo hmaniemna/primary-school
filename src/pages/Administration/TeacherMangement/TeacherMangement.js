@@ -42,6 +42,7 @@ const headCells=[
 ]
 
 const ClassMangement = () => {
+    const [id,setID]=useState('');
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
     const [userName,setUserName] = useState('');
@@ -62,7 +63,7 @@ const ClassMangement = () => {
       },[]);
       const registerTeacher = () => {
         Axios.post("http://localhost:3000/register",{
-         genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
+         id:id,genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
       });
         setTeacherList([...teacherList,
           {genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password},
@@ -71,6 +72,9 @@ const ClassMangement = () => {
       const deleteTeachers = (log) => {
         Axios.delete(`http://localhost:3000/deleteTeacher/${log}`)
       };
+      const updateTeacher = () => {
+        
+      }
   return (
     <div>
         <Button class="ui right floated blue basic button" onClick={()=> setOpenPopup(true)}>

@@ -43,13 +43,10 @@ const headCells=[
 
 const ClassMangement = () => {
   const classes = useStyles();
-<<<<<<< HEAD
   const [id,setID]=useState('');
   const [name,setName]=useState('');
   const [level,setlevel]=useState();
   const [number,setNumber]=useState('');
-=======
->>>>>>> 2c0b3e2783db02c56b015826c9e8d82209dfd234
   const [classList, setClassList]=useState([]);
   const [openPopup,setOpenPopup]=useState(false);
 
@@ -67,7 +64,6 @@ const ClassMangement = () => {
       setClassList(response.data)
     })
   },[])
-<<<<<<< HEAD
   const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
      id:id,name:name,level:level,number:number
@@ -81,8 +77,6 @@ const ClassMangement = () => {
     console.log('deleted');
     console.log(id_classe);
   };
-=======
->>>>>>> 2c0b3e2783db02c56b015826c9e8d82209dfd234
   return (
     <div>
         <Button class="ui right floated blue basic button" onClick={()=> setOpenPopup(true)}>اضافة الاقسام</Button>

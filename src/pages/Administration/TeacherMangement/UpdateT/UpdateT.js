@@ -1,4 +1,3 @@
-
 import React,{useState,useEffect} from 'react';
 import Axios from 'axios';
 import TeacherManagement from '../TeacherMangement';
@@ -17,7 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Navbar,NavDropdown,Nav } from "react-bootstrap"
 
-import './AddT.css'
+import './UpdateT.css'
 
       
 
@@ -54,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = () => {
+const UpdateT = () => {
   const [firstName,setFirstName] = useState('');
   const [lastName,setLastName] = useState('');
   const [userName,setUserName] = useState('');
@@ -264,7 +263,8 @@ const handleSubmit = (event) => {
             className={classes.submit}
             onClick={registerTeacher}
           >
-            اضافة
+            تعـديـل
+
         
           </Button>
       
@@ -272,16 +272,10 @@ const handleSubmit = (event) => {
       <Box mt={8}>
       </Box>
       
-      {teacherList.map((v) => 
-      { return (
-        <h3>
-        Nom: {v.nom} | Prenom : {v.prenom} | Login:{v.login} | mdp:{v.mdp} | genre:{v.genre}
-        </h3>
-      );
-    })}
+      
     </Container>
 
   );
 }
 
-export default AddT;
+export default UpdateT;

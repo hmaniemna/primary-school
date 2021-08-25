@@ -115,15 +115,13 @@ const AddT = (props) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-<<<<<<< HEAD
             onClick={submitClass}
-=======
             onClick={()=>{
               setOpenPopup(false)
               submitClass()
               
             }}
->>>>>>> 2c0b3e2783db02c56b015826c9e8d82209dfd234
+
           >
             اضافة
           </Button>
