@@ -42,6 +42,10 @@ const AddT = (props) => {
   const [number,setNumber]=useState('');
   const {setOpenPopup}=props;
 
+  function refreshPage() {
+    window.location.reload(false); 
+  }
+
   const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
       id:id,name:name,level:level,number:number
@@ -119,7 +123,7 @@ const AddT = (props) => {
             onClick={()=>{
               setOpenPopup(false)
               submitClass()
-              
+              refreshPage()
             }}
 
           >

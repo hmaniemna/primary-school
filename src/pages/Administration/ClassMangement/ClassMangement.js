@@ -8,7 +8,6 @@ import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -50,6 +49,9 @@ const ClassMangement = () => {
   const [classList, setClassList]=useState([]);
   const [openPopup,setOpenPopup]=useState(false);
 
+    function refreshPage() {
+         window.location.reload(false); 
+    }
   const submitAction=()=>{
     setClassList([...classList,{nom:AddC.name,niveau:AddC.level,nb:AddC.number,anneescolaire:AddC.an}])
   }
@@ -79,7 +81,7 @@ const ClassMangement = () => {
   };
   return (
     <div>
-        <Button class="ui right floated blue basic button" onClick={()=> setOpenPopup(true)}>اضافة الاقسام</Button>
+        <Button class="ui right floated blue basic button" onClick={()=> {setOpenPopup(true)}}>اضافة الاقسام</Button>
         <TblContainer>
             <TblHead/>
             <TableBody>
@@ -87,7 +89,15 @@ const ClassMangement = () => {
                     return (
                         <TableRow key={NavItem.id_classe}>
                             <TableCell>
-                                <button class="ui red basic button" onClick={() => {deleteClass(val.id_classe)}}>حذف</button>
+                                <button 
+                                  class="ui red basic button" 
+                                  onClick={() => {
+                                    deleteClass(val.id_classe)
+                                    refreshPage()
+                                  }}
+                                >
+                                  حذف
+                                </button>
                                 <button class="ui blue basic button">تعديل</button>    
                             </TableCell>    
                             <TableCell>{val.anneescolaire}</TableCell>

@@ -49,7 +49,10 @@ const ClassMangement = () => {
     const [password,setPassword] = useState('');
     const [gender,setGender] = useState('female');
     const [teacherList,setTeacherList] = useState([]);
-  const [openPopup,setOpenPopup]=useState(false);
+    const [openPopup,setOpenPopup]=useState(false);
+    function refreshPage() {
+      window.location.reload(false); 
+    }
 
   const {
       TblContainer,
@@ -87,7 +90,15 @@ const ClassMangement = () => {
                     return (
                         <TableRow key={NavItem.id_classe}>
                             <TableCell>
-                                <button class="ui red basic button" onClick={() => {deleteTeachers(val.login)}}>حذف</button>
+                                <button 
+                                  class="ui red basic button" 
+                                  onClick={() => {
+                                    deleteTeachers(val.login)
+                                    refreshPage()
+                                  }}
+                                >
+                                  حذف
+                                </button>
                                 <button class="ui blue basic button">تعديل</button>    
                             </TableCell>   
                             <TableCell>{val.genre}</TableCell> 
@@ -107,7 +118,7 @@ const ClassMangement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
-            <AddT/>
+            <AddT setOpenPopup={setOpenPopup}/>
       </Popup>
     </div>
   );

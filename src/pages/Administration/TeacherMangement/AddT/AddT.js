@@ -54,20 +54,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = () => {
+const AddT = (props) => {
   const [firstName,setFirstName] = useState('');
   const [lastName,setLastName] = useState('');
   const [userName,setUserName] = useState('');
   const [password,setPassword] = useState('');
   const [gender,setGender] = useState('female');
   const [teacherList,setTeacherList] = useState([]);
+  const {setOpenPopup}=props;
   useEffect(()=>{
     Axios.get("http://localhost:3000/getTeachers").then((response)=>{
       setTeacherList(response.data);
     });
   },[]);
   const registerTeacher = () => {
-    Axios.post("http://localhost:3000/registerTeacher",{
+    Axios.post("http://localhost:3000/register",{
      genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
   });
     setTeacherList([...teacherList,
@@ -92,71 +93,11 @@ const AddT = () => {
   const genderChangeHandler = (e) =>{
     setGender(e.target.value);
   };
+  function refreshPage() {
+    window.location.reload(false); 
+  }
 
   const classes = useStyles();
-
- /* const [value, setValue] = React.useState('');
-
-
-  const [firstName, setFirstName]= useState('');
-
-  const firstNameChangeHandler=(e)=>{
-    setFirstName(e.target.value);
-  }
-
-  const [lastName, setLastName]= useState('');
-
-  const lastNameChangeHandler=(e)=>{
-    setLastName(e.target.value);
-  }
-
-  const [userName, setUserName]= useState('');
-
-  const userNameChangeHandler=(e)=>{
-    setUserName(e.target.value);
-  }
-  const [password, setPassword]= useState('');
-
-  const passwordChangeHandler=(e)=>{
-    setPassword(e.target.value);
-  }
-  const [gender, setGender]= useState('');
-
-  const genderChangeHandler=(e)=>{
-    setGender(e.target.value);
-  }
-
-  const [value, setValue] = React.useState('');
->>>>>>> 0bc9da319d29a65ffd054c4febb12bb078035414
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState('');
-  const handleRadioChange = (event) => {
-    setValue(event.target.value);
-    setHelperText(' ');
-    setError(false)
-  };
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!value) {
-      setHelperText('الرجاء تحديد خيار');
-      setError(true);
-    }
- <form methode="POST" className={classes.form} noValidate onSubmit={handleSubmit}>
-  const addT = () => {
-    Axios.post('http://localhost3001/admin/teachermanagemnet/add',{
-      fisrtname : firstName,
-      lastname : lastName,
-      username : userName,
-      password : password,
-      gender : gender,
-    }).lastNameChangeHandler((response)=> {
-      console.log(response);
-    });
-  }
-};
-*/
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -165,11 +106,7 @@ const handleSubmit = (event) => {
            إضافة المعلمين   
         </Typography>
 
-        <form className={classes.form} noValidate >
-
-       
-
-            
+        <form className={classes.form} noValidate > 
           <TextField 
             margin="normal"
             required
@@ -262,7 +199,11 @@ const handleSubmit = (event) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={registerTeacher}
+            onClick={()=>{
+              setOpenPopup(false)
+              registerTeacher()
+              refreshPage()
+            }}
           >
             اضافة
         
@@ -271,14 +212,6 @@ const handleSubmit = (event) => {
       </div>
       <Box mt={8}>
       </Box>
-      
-      {teacherList.map((v) => 
-      { return (
-        <h3>
-        Nom: {v.nom} | Prenom : {v.prenom} | Login:{v.login} | mdp:{v.mdp} | genre:{v.genre}
-        </h3>
-      );
-    })}
     </Container>
 
   );
