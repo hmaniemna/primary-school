@@ -14,26 +14,29 @@ const Home=()=>{
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="overlay-image" style={{backgroundImage:'url(' + Image1 + ')'}}></div>
-              <div class="container">
-                <h1>مرحبا بك في الصفحة الخاصة بمدرستنا الإبتدائيّة</h1>
+              <div class="container1">
+                <h1 >مرحبا بك في الصفحة الخاصة بمدرستنا الإبتدائيّة</h1>
               </div>
             </div>
             <div class="carousel-item ">
             <div class="overlay-image" style={{backgroundImage:'url(' + Image2 + ')'}}></div>
-              <div class="container">
+              <div class="container2">
                 <h1>إذا كنت إداري </h1>
-                <a href="/Login/LoginAdmin" class="btn btn-lg btn-primary">
+                <button class="ui button" class="ui secondary basic button"><a href="/Login/LoginAdmin" className="b"> 
                 أنقر هنا
                 </a>
+                </button>
+                
               </div>
             </div>
             <div class="carousel-item">
             <div class="overlay-image" style={{backgroundImage:'url(' + Image3 + ')'}}></div>
-              <div class="container">
+              <div class="container3">
                 <h1>إذا كنت مدرس</h1>
-                <a href="/Login/LoginTeacher" class="btn btn-lg btn-primary">
+                <button class="ui button" class="ui secondary basic button"><a href="/Login/LoginAdmin" className="b"> 
                 أنقر هنا
                 </a>
+                </button>
               </div>
             </div>
           </div>

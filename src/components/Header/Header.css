@@ -1,3 +1,23 @@
 .title{
-    text-align: right;
+
+    right:100px;
+    left:0;
+    color: black;
+    
+}
+.bigTitle{
+
+    
+    font-size: xx-large;
+    color: rgb(90, 158, 221);
+}
+.tinyTitle{
+ 
+   
+ 
+    color: black;
+    font-size: medium;
+}
+nav{
+    background-color: white;
 }

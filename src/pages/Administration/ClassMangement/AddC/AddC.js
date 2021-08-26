@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = () => {
+const AddC = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
@@ -139,4 +139,4 @@ const handleSubmit = (event) => {
   );
 }
 
-export default AddT;
+export default AddC;
