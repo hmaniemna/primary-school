@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Header.css";
-import {nav, Form, Button} from "react-bootstrap"
+import {nav} from "react-bootstrap"
 const Header =()=>{
   return(
     <nav class="navbar navbar-expand-lg navbar-light bg-white" >
@@ -20,6 +20,7 @@ const Header =()=>{
       </ul>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" className="title">
+<<<<<<< HEAD
     <ul class="navbar-nav me-auto">
         <li class="nav-item active">
         <button type="button" class="btn btn-white"  ><a href="/Login/LoginAdmin" className='tinyTitle'> دخول الإداريين</a></button>
@@ -28,6 +29,10 @@ const Header =()=>{
         <button type="button" class="btn btn-white"  ><a href="/Login/LoginAdmin" className='tinyTitle'> دخول المعلمون</a></button>
         </li>
       </ul>
+=======
+      <button type="button" class="btn btn-light" ><a href="/Login/LoginAdmin"> دخول الإداريين</a></button>
+      <button type="button" class="btn btn-light" ><a href="/Login/LoginTeacher"> دخول المعلمون</a></button> 
+>>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
     </div>
   </div>
 </nav>

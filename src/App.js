@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from "./components/Header/Header";
@@ -28,11 +28,12 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
-
+import Hello from "./components/hello";
 
 const App = () => {
     return (
     <div>
+
         <Router>
             <div>
             <Header/>
@@ -41,8 +42,12 @@ const App = () => {
                     <Route path="/admin" exact component={Administration} />
                     <Route path="/admin/infos" exact component={PersonalInfoA} />
                     <Route path="/admin/classmanagement" exact component={ClassMangement} />
+                    <Route path="/admin/classmanagemnet" exact component={ClassMangement} />
+                    <Route path='/admin/classmanagemnet/addc' exact component={AddC}/>
                     <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
+                    <Route path='/admin/teachermanagemnet/addt' exact component={AddT}/>
                     <Route path="/admin/subjectmanagemnet" exact component={SubjectMangement} />
+                    <Route path='/admin/subjectmanagemnet/addsub' exact component={AddSub}/>
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
                     <Route path="/admin/timetablemanagemnet" exact component={TimetableMangement} />
                     <Route path="/admin/tools" exact component={Toolbox} />
@@ -60,7 +65,9 @@ const App = () => {
             </div>
         </Router>
     </div>
+    
     );
 
 };
+
 export default App;

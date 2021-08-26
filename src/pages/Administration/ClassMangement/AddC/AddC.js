@@ -1,31 +1,17 @@
-import React from 'react';
-//import Avatar from '@material-ui/core/Avatar';
+import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import Checkbox from '@material-ui/core/Checkbox';
-//import Link from '@material-ui/core/Link';
-//import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import Axios from 'axios';
 import './AddC.css'
+//import ClassMangement from '../ClassMangement';
 
-      
-function RadioButtonsGroup() {
-    const [value, setValue] = React.useState('female');
-  
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
-}
+
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,28 +33,33 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+<<<<<<< HEAD
 }));
 
 const AddC = () => {
+=======
+})); 
+const AddT = (props) => {
+>>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
   const classes = useStyles();
-  const [value, setValue] = React.useState('');
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState('');
-  const handleRadioChange = (event) => {
-    setValue(event.target.value);
-    setHelperText(' ');
-    setError(false);
-  };
+  const [id,setID]=useState('');
+  const [name,setName]=useState('');
+  const [level,setlevel]=useState();
+  const [number,setNumber]=useState('');
+  const {setOpenPopup}=props;
 
-const handleSubmit = (event) => {
-    event.preventDefault();
+  function refreshPage() {
+    window.location.reload(false); 
+  }
 
-    if (!value) {
-      setHelperText('الرجاء تحديد خيار');
-      setError(true);
-    }
-};
-
+  const submitClass=()=>{
+    Axios.post('http://localhost:3000/api/insert',{
+      id:id,name:name,level:level,number:number
+    })
+    /*setClassList([...classList,
+      {name:name,level:level,number:number},
+    ]); */
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -76,8 +67,23 @@ const handleSubmit = (event) => {
         <Typography component="h1" variant="body">
            إضافة الأقسام   
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate>
 
+        <TextField 
+            margin="normal"
+            required
+            fullWidth
+            id="level"
+            label="مستوى القسم"
+            name="level"
+            autoComplete="level"
+            autoFocus
+            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
+            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={(e)=>{
+              setlevel(e.target.value)
+            }}
+          />
           <TextField
             className=""
             margin="normal"
@@ -90,32 +96,25 @@ const handleSubmit = (event) => {
             autoComplete="name"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={(e)=>{
+              setName(e.target.value)
+            }}
           />
                       
-        <TextField 
+          <TextField 
             margin="normal"
             required
             fullWidth
-            id="level"
-            label="مستوى القسم"
-            name="level"
-            autoComplete="level"
+            id="number"
+            label="عدد التلاميذ"
+            name="number"
+            autoComplete="number"
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
-          <TextField
-            className=""
-            margin="normal"
-            required
-            fullWidth
-            name="number"
-            label="عدد التلاميذ"
-            type="number"
-            id="number"
-            autoComplete="number"
-            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={(e)=>{
+              setNumber(e.target.value)
+            }}
           />
           <br/><br/>
           </form>
@@ -126,11 +125,16 @@ const handleSubmit = (event) => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={submitClass}
+            onClick={()=>{
+              setOpenPopup(false)
+              submitClass()
+              refreshPage()
+            }}
+
           >
             اضافة
           </Button>
-      
-        
       </div>
       <Box mt={8}>
         
