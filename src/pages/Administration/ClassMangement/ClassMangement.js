@@ -1,3 +1,44 @@
+<<<<<<< HEAD
+import React from "react";
+
+
+const ClassMangement = ()=>{
+  return (
+    <table class="ui compact celled definition table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>مستوى القسم</th>
+      <th>إسم القسم</th>
+      <th>عدد التلاميذ</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+
+  </tbody>
+  <tfoot class="full-width">
+    <tr>
+      <th></th>
+      <th colspan="4">
+        <div class="ui right floated small primary labeled icon button">
+          <i class="user icon"></i> Add User
+        </div>
+        <div class="ui small button">
+          Approve
+        </div>
+        <div class="ui small  disabled button">
+          Approve All
+        </div>
+      </th>
+    </tr>
+  </tfoot>
+</table>
+
+  )
+
+}
+=======
 import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,7 +48,6 @@ import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -50,6 +90,9 @@ const ClassMangement = () => {
   const [classList, setClassList]=useState([]);
   const [openPopup,setOpenPopup]=useState(false);
 
+    function refreshPage() {
+         window.location.reload(false); 
+    }
   const submitAction=()=>{
     setClassList([...classList,{nom:AddC.name,niveau:AddC.level,nb:AddC.number,anneescolaire:AddC.an}])
   }
@@ -79,7 +122,7 @@ const ClassMangement = () => {
   };
   return (
     <div>
-        <Button class="ui right floated blue basic button" onClick={()=> setOpenPopup(true)}>اضافة الاقسام</Button>
+        <Button class="ui right floated blue basic button" onClick={()=> {setOpenPopup(true)}}>اضافة الاقسام</Button>
         <TblContainer>
             <TblHead/>
             <TableBody>
@@ -87,7 +130,15 @@ const ClassMangement = () => {
                     return (
                         <TableRow key={NavItem.id_classe}>
                             <TableCell>
-                                <button class="ui red basic button" onClick={() => {deleteClass(val.id_classe)}}>حذف</button>
+                                <button 
+                                  class="ui red basic button" 
+                                  onClick={() => {
+                                    deleteClass(val.id_classe)
+                                    refreshPage()
+                                  }}
+                                >
+                                  حذف
+                                </button>
                                 <button class="ui blue basic button">تعديل</button>    
                             </TableCell>    
                             <TableCell>{val.anneescolaire}</TableCell>
@@ -110,4 +161,5 @@ const ClassMangement = () => {
   );
 }
 
+>>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
 export default ClassMangement;

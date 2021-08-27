@@ -33,14 +33,24 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+<<<<<<< HEAD
+}));
+
+const AddC = () => {
+=======
 })); 
 const AddT = (props) => {
+>>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
   const classes = useStyles();
   const [id,setID]=useState('');
   const [name,setName]=useState('');
   const [level,setlevel]=useState();
   const [number,setNumber]=useState('');
   const {setOpenPopup}=props;
+
+  function refreshPage() {
+    window.location.reload(false); 
+  }
 
   const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
@@ -119,7 +129,7 @@ const AddT = (props) => {
             onClick={()=>{
               setOpenPopup(false)
               submitClass()
-              
+              refreshPage()
             }}
 
           >
@@ -133,4 +143,4 @@ const AddT = (props) => {
   );
 }
 
-export default AddT;
+export default AddC;

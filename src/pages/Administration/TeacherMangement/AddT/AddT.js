@@ -54,20 +54,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = () => {
+const AddT = (props) => {
   const [firstName,setFirstName] = useState('');
   const [lastName,setLastName] = useState('');
   const [userName,setUserName] = useState('');
   const [password,setPassword] = useState('');
   const [gender,setGender] = useState('female');
   const [teacherList,setTeacherList] = useState([]);
+  const {setOpenPopup}=props;
   useEffect(()=>{
     Axios.get("http://localhost:3000/getTeachers").then((response)=>{
       setTeacherList(response.data);
     });
   },[]);
   const registerTeacher = () => {
-    Axios.post("http://localhost:3000/registerTeacher",{
+    Axios.post("http://localhost:3000/register",{
      genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
   });
   
@@ -93,10 +94,18 @@ const AddT = () => {
   const genderChangeHandler = (e) =>{
     setGender(e.target.value);
   };
+<<<<<<< HEAD
 
   const classes = useStyles();
 
  
+=======
+  function refreshPage() {
+    window.location.reload(false); 
+  }
+
+  const classes = useStyles();
+>>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -105,11 +114,7 @@ const AddT = () => {
            إضافة المعلمين   
         </Typography>
 
-        <form className={classes.form} noValidate >
-
-       
-
-            
+        <form className={classes.form} noValidate > 
           <TextField 
             margin="normal"
             required
@@ -202,7 +207,11 @@ const AddT = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={registerTeacher}
+            onClick={()=>{
+              setOpenPopup(false)
+              registerTeacher()
+              refreshPage()
+            }}
           >
             اضافة
         
@@ -211,14 +220,6 @@ const AddT = () => {
       </div>
       <Box mt={8}>
       </Box>
-      
-      {teacherList.map((v) => 
-      { return (
-        <h3>
-        Nom: {v.nom} | Prenom : {v.prenom} | Login:{v.login} | mdp:{v.mdp} | genre:{v.genre}
-        </h3>
-      );
-    })}
     </Container>
 
   );

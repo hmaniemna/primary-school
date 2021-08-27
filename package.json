@@ -19,7 +19,11 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+<<<<<<< HEAD
     "date-fns": "^2.23.0",
+=======
+    "concurrently": "^6.2.1",
+>>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
     "jss-rtl": "^0.3.0",
     "react": "^17.0.2",
     "react-big-calendar": "^0.35.0",
@@ -30,6 +34,7 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "save": "^2.4.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.3.0",

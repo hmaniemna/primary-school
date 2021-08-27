@@ -55,9 +55,16 @@ const TeacherManagement = () => {
     const [newLastName,setNewLastName] = useState('');
     const [newUserName,setNewUserName] = useState('');
     const [teacherList,setTeacherList] = useState([]);
+<<<<<<< HEAD
     const [newTeacherList,setNewTeacherList] = useState([]);
     const [editTeacherlogin,setEditTeacherLogin] = useState(null);
   const [openPopup,setOpenPopup]=useState(false);
+=======
+    const [openPopup,setOpenPopup]=useState(false);
+    function refreshPage() {
+      window.location.reload(false); 
+    }
+>>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
 
   const {
       TblContainer,
@@ -112,8 +119,21 @@ const TeacherManagement = () => {
                     return (
                         /*<TableRow key={NavItem.id_classe}>
                             <TableCell>
+<<<<<<< HEAD
                                 <button class="ui red basic button" onClick={() => {deleteTeachers(val.login)}}>حذف</button>
                                 <button class="ui blue basic button"  >تعديل</button>    
+=======
+                                <button 
+                                  class="ui red basic button" 
+                                  onClick={() => {
+                                    deleteTeachers(val.login)
+                                    refreshPage()
+                                  }}
+                                >
+                                  حذف
+                                </button>
+                                <button class="ui blue basic button">تعديل</button>    
+>>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
                             </TableCell>   
                             <TableCell>{val.genre}</TableCell> 
                             <TableCell>{val.login}</TableCell>
@@ -138,8 +158,12 @@ const TeacherManagement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
+<<<<<<< HEAD
             
             <AddT />
+=======
+            <AddT setOpenPopup={setOpenPopup}/>
+>>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
       </Popup>
     
     </div>
