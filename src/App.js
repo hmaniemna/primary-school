@@ -17,7 +17,6 @@ import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMan
 import AddT from "./pages/Administration/TeacherMangement/AddT/AddT";
 
 import TeacherRecru from "./pages/Administration/TeacherRecru/TeacherRecru";
-import TimetableMangement from "./pages/Administration/TimetableMangement/TimetableMangement";
 import Toolbox from "./pages/Administration/Toolbox/Toolbox";
 
 import Teacher from "./pages/Teacher/Teacher";
@@ -29,6 +28,7 @@ import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
 import Hello from "./components/hello";
+import Timetablemanagement from "./pages/Timetablemanagement";
 
 const App = () => {
     return (
@@ -37,6 +37,7 @@ const App = () => {
         <Router>
             <div>
             <Header/>
+          
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
@@ -49,7 +50,7 @@ const App = () => {
                     <Route path="/admin/subjectmanagemnet" exact component={SubjectMangement} />
                     <Route path='/admin/subjectmanagemnet/addsub' exact component={AddSub}/>
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
-                    <Route path="/admin/timetablemanagemnet" exact component={TimetableMangement} />
+                    <Route path="/admin/timetablemanagemnet" exact component={Timetablemanagement} />
                     <Route path="/admin/tools" exact component={Toolbox} />
 
                     <Route path="/teacher" exact component={Teacher} />

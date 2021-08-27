@@ -70,6 +70,7 @@ const AddT = () => {
     Axios.post("http://localhost:3000/registerTeacher",{
      genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
   });
+  
     setTeacherList([...teacherList,
       {genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password},
     ]); 
@@ -95,68 +96,7 @@ const AddT = () => {
 
   const classes = useStyles();
 
- /* const [value, setValue] = React.useState('');
-
-
-  const [firstName, setFirstName]= useState('');
-
-  const firstNameChangeHandler=(e)=>{
-    setFirstName(e.target.value);
-  }
-
-  const [lastName, setLastName]= useState('');
-
-  const lastNameChangeHandler=(e)=>{
-    setLastName(e.target.value);
-  }
-
-  const [userName, setUserName]= useState('');
-
-  const userNameChangeHandler=(e)=>{
-    setUserName(e.target.value);
-  }
-  const [password, setPassword]= useState('');
-
-  const passwordChangeHandler=(e)=>{
-    setPassword(e.target.value);
-  }
-  const [gender, setGender]= useState('');
-
-  const genderChangeHandler=(e)=>{
-    setGender(e.target.value);
-  }
-
-  const [value, setValue] = React.useState('');
->>>>>>> 0bc9da319d29a65ffd054c4febb12bb078035414
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState('');
-  const handleRadioChange = (event) => {
-    setValue(event.target.value);
-    setHelperText(' ');
-    setError(false)
-  };
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!value) {
-      setHelperText('الرجاء تحديد خيار');
-      setError(true);
-    }
- <form methode="POST" className={classes.form} noValidate onSubmit={handleSubmit}>
-  const addT = () => {
-    Axios.post('http://localhost3001/admin/teachermanagemnet/add',{
-      fisrtname : firstName,
-      lastname : lastName,
-      username : userName,
-      password : password,
-      gender : gender,
-    }).lastNameChangeHandler((response)=> {
-      console.log(response);
-    });
-  }
-};
-*/
+ 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
