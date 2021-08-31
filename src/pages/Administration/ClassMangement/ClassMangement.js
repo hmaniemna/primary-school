@@ -1,44 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-
-const ClassMangement = ()=>{
-  return (
-    <table class="ui compact celled definition table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>مستوى القسم</th>
-      <th>إسم القسم</th>
-      <th>عدد التلاميذ</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-
-  </tbody>
-  <tfoot class="full-width">
-    <tr>
-      <th></th>
-      <th colspan="4">
-        <div class="ui right floated small primary labeled icon button">
-          <i class="user icon"></i> Add User
-        </div>
-        <div class="ui small button">
-          Approve
-        </div>
-        <div class="ui small  disabled button">
-          Approve All
-        </div>
-      </th>
-    </tr>
-  </tfoot>
-</table>
-
-  )
-
-}
-=======
 import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -48,6 +7,8 @@ import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
+import EditableRow from '../ClassMangement/EditableRow';
+import ReadOnlyRow from '../ClassMangement/ReadOnlyRow';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -83,19 +44,49 @@ const headCells=[
 
 const ClassMangement = () => {
   const classes = useStyles();
-  const [id,setID]=useState('');
+  const [id,setID]=useState(''); 
+  const [editClassId,setEditClassId] = useState(null);
+  const [editFormData,setEditFormData]=useState({
+    name:"",
+    level:"",
+    number:0,
+    year:""
+  })
+
+
   const [name,setName]=useState('');
+  const [newName,setNewName]=useState('');
+
   const [level,setlevel]=useState();
+  const [newLevel,setNewLevel]=useState();
+
   const [number,setNumber]=useState('');
+  const [newNumber,setNewNumber]=useState('');
+
   const [classList, setClassList]=useState([]);
+  const [newClassList,setNewClassList]=useState([]);
+
   const [openPopup,setOpenPopup]=useState(false);
 
-    function refreshPage() {
-         window.location.reload(false); 
-    }
+  function refreshPage() {
+    window.location.reload(false); 
+  }
+
   const submitAction=()=>{
     setClassList([...classList,{nom:AddC.name,niveau:AddC.level,nb:AddC.number,anneescolaire:AddC.an}])
   }
+
+  const changeName=(e)=>{
+    setName(e.target.value)
+  }
+
+  /*const changeLevel=(e)=>{
+    setlevel(e.target.value)
+  }
+
+  const changeNumber=(e)=>{
+    setNumber(e.target.value)
+  }*/
 
   const {
       TblContainer,
@@ -107,6 +98,7 @@ const ClassMangement = () => {
       setClassList(response.data)
     })
   },[])
+
   const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
      id:id,name:name,level:level,number:number
@@ -115,39 +107,114 @@ const ClassMangement = () => {
       alert('Succ insert!')
     })
   }
+
+  const handleEditClick = (event,val) => {
+    event.preventDefault();
+    setEditClassId(val.id_classe);
+
+    const formValues={
+      name:val.nom,
+      level:val.niveau,
+      number:val.nb,
+      year:val.anneescolaire     
+    }
+    setEditFormData(formValues);
+  };
+
+  const handleEditChange=(event)=>{
+    event.preventDefault();
+
+    const fieldName=event.target.getAttribute("name");
+    const fieldValue=event.target.value;
+
+    const newData={...editFormData};
+    newData[fieldName]=fieldValue;
+  }
+
+  /*const handelEditFormSubmit = (event,id) => {
+    event.preventDefault();
+
+    const editedVal={
+      id: editClassId,
+      name: editFormData.name,
+      level: editFormData.level,
+      number:editFormData.number,
+      year:editFormData.year
+    };
+
+    Axios.put("http://localhost:3000/updateClassname",{
+        nom:newName,id_classe:id
+    });
+      console.log(newName);
+      setNewName("");
+
+    const newClassList=[...classList];
+
+    const index = classList.findIndex((classL) => classL.id_classe === editClassId);
+
+    newClassList[index]=editedVal;
+
+    setClassList(newClassList);
+    setEditClassId(null);
+  };*/
+
   const deleteClass = (id_classe) => {
     Axios.delete(`http://localhost:3000/api/delete/${id_classe}`)
     console.log('deleted');
     console.log(id_classe);
   };
+
+  const updateName=(id)=>{
+    Axios.put("http://localhost:3000/updateClassname",{
+        nom:newName,id_classe:id
+    });
+      console.log(newName);
+      setNewName("");
+  }
+
+  const handleCancelClick=()=>{
+    setEditClassId(null);
+  }
+
+  const handleInputChange=(event)=>{
+    setEditClassId(event.id_classe)
+    setNewName(event.nom);
+    setNewNumber(event.nb)
+    setNewLevel(event.niveau)
+    updateName(editClassId)
+  }
+
   return (
     <div>
         <Button class="ui right floated blue basic button" onClick={()=> {setOpenPopup(true)}}>اضافة الاقسام</Button>
-        <TblContainer>
+        <TblContainer >
             <TblHead/>
-            <TableBody>
-                {classList.map((val)=>{
-                    return (
-                        <TableRow key={NavItem.id_classe}>
-                            <TableCell>
-                                <button 
-                                  class="ui red basic button" 
-                                  onClick={() => {
-                                    deleteClass(val.id_classe)
-                                    refreshPage()
-                                  }}
-                                >
-                                  حذف
-                                </button>
-                                <button class="ui blue basic button">تعديل</button>    
-                            </TableCell>    
-                            <TableCell>{val.anneescolaire}</TableCell>
-                            <TableCell>{val.nb}</TableCell>                   
-                            <TableCell>{val.nom}</TableCell>
-                            <TableCell>{val.niveau}</TableCell>      
-                        </TableRow>
-                    )
-                })}
+            <TableBody >
+                {classList.map((val)=>(
+                      <React.Fragment>  
+                        {editClassId === val.id_classe?  ( 
+                        <EditableRow 
+                          editFormData={editFormData}
+                          handleEditChange={handleEditClick}
+                          setNewName={setNewName} 
+                          val={val} 
+                          changeName={changeName} 
+                          updateName={updateName}
+                          newClassList={newClassList} 
+                          handleCancelClick={handleCancelClick}
+                          handleInputChange={handleInputChange}
+                          handleEditChange={handleEditChange}
+                        /> 
+                        ) : (
+                          <ReadOnlyRow val={val}
+                            handleEditClick={handleEditClick} 
+                            deleteClass={deleteClass}
+                            refreshPage={refreshPage}
+                          />
+                        )
+                        }
+                      </React.Fragment>
+                ))}
             </TableBody>
         </TblContainer>
 
@@ -155,11 +222,10 @@ const ClassMangement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
-            <AddC setOpenPopup={setOpenPopup}/>
+            <AddC changeName={changeName} setOpenPopup={setOpenPopup}/>
       </Popup>
     </div>
   );
 }
 
->>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
 export default ClassMangement;

@@ -7,10 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
-import './AddC.css'
-//import ClassMangement from '../ClassMangement';
-
-
+import './AddC.css';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,20 +30,15 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-<<<<<<< HEAD
 }));
 
-const AddC = () => {
-=======
-})); 
-const AddT = (props) => {
->>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
+const AddC = (props) => {
   const classes = useStyles();
   const [id,setID]=useState('');
   const [name,setName]=useState('');
   const [level,setlevel]=useState();
   const [number,setNumber]=useState('');
-  const {setOpenPopup}=props;
+  const {setOpenPopup,changeName,changeLevel,changeNumber,handelEditFormSubmit}=props;
 
   function refreshPage() {
     window.location.reload(false); 
@@ -56,9 +48,6 @@ const AddT = (props) => {
     Axios.post('http://localhost:3000/api/insert',{
       id:id,name:name,level:level,number:number
     })
-    /*setClassList([...classList,
-      {name:name,level:level,number:number},
-    ]); */
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -97,7 +86,7 @@ const AddT = (props) => {
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
             onChange={(e)=>{
-              setName(e.target.value)
+              changeName(e)
             }}
           />
                       
