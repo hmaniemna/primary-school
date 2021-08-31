@@ -7,8 +7,8 @@ import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
-import EditableRow from '../ClassMangement/EditableRow';
-import ReadOnlyRow from '../ClassMangement/ReadOnlyRow';
+import EditableRow from './EditableRowC';
+import ReadOnlyRow from './ReadOnlyRowC';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
