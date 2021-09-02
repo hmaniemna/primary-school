@@ -2,13 +2,17 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const EditableRow = ({handleInputChange,val,changeName,updateName,setNewName,editFormData,handelEditChange,handleCancelClick,handelEditFormSubmit}) => {
+const EditableRow = ({refreshPage,val,updateClassName,updateClassLevel,updateClassNumber,updateClassYear,setNewYear,setNewLevel,setNewNumber,setNewName,editFormData,handleCancelClick}) => {
         return (
                 <TableRow key={NavItem.id_classe}>
                         <TableCell>
                                 <button type="submit" class="ui blue basic button"  
                                     onClick={()=>{
-                                        updateName(val.id_classe)
+                                        updateClassName(val.id_classe)
+                                        updateClassNumber(val.id_classe)
+                                        updateClassLevel(val.id_classe)
+                                        updateClassYear(val.id_classe)
+                                        refreshPage()
                                     }}>
                                         تحديث
                                 </button>  
@@ -32,7 +36,9 @@ const EditableRow = ({handleInputChange,val,changeName,updateName,setNewName,edi
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.year}
-                                onChange={()=>{}}
+                                onChange={(e)=>{
+                                    setNewYear(e.target.value)    
+                                }}
                             /> 
                         </TableCell>
                         <TableCell>
@@ -48,7 +54,9 @@ const EditableRow = ({handleInputChange,val,changeName,updateName,setNewName,edi
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.number}
-                                onChange={handelEditChange}
+                                onChange={(e)=>{
+                                    setNewNumber(e.target.value)    
+                                }}
                             />    
                         </TableCell> 
                         <TableCell>
@@ -66,8 +74,7 @@ const EditableRow = ({handleInputChange,val,changeName,updateName,setNewName,edi
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.name}
                                 onChange={(e)=>{
-                                    setNewName(e.target.value)
-                                    changeName(e)
+                                    setNewName(e.target.value)    
                                 }}
                             />
                         </TableCell>
@@ -85,7 +92,7 @@ const EditableRow = ({handleInputChange,val,changeName,updateName,setNewName,edi
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.level}
                                 onChange={(e)=>{
-                                    setNewName(e.target.value)
+                                    setNewLevel(e.target.value)    
                                 }}
                             />
                         </TableCell> 

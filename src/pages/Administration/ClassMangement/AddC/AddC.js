@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
-import './AddC.css';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,7 +37,7 @@ const AddC = (props) => {
   const [name,setName]=useState('');
   const [level,setlevel]=useState();
   const [number,setNumber]=useState('');
-  const {setOpenPopup,changeName,changeLevel,changeNumber,handelEditFormSubmit}=props;
+  const {setOpenPopup}=props;
 
   function refreshPage() {
     window.location.reload(false); 
@@ -86,7 +85,7 @@ const AddC = (props) => {
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
             onChange={(e)=>{
-              changeName(e)
+              setName(e.target.value)
             }}
           />
                       
@@ -118,7 +117,7 @@ const AddC = (props) => {
             onClick={()=>{
               setOpenPopup(false)
               submitClass()
-              refreshPage()
+              
             }}
 
           >

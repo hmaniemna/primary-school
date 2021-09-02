@@ -9,6 +9,7 @@ import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
 import EditableRow from './EditableRowC';
 import ReadOnlyRow from './ReadOnlyRowC';
+import Notification from '../../../components/Notification';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -63,30 +64,17 @@ const ClassMangement = () => {
   const [number,setNumber]=useState('');
   const [newNumber,setNewNumber]=useState('');
 
+  const [newYear,setNewYear]=useState('');
+
   const [classList, setClassList]=useState([]);
   const [newClassList,setNewClassList]=useState([]);
 
   const [openPopup,setOpenPopup]=useState(false);
+  const [notify,setNotify]=useState({isOpen:false,message:'',type:''})
 
   function refreshPage() {
     window.location.reload(false); 
   }
-
-  const submitAction=()=>{
-    setClassList([...classList,{nom:AddC.name,niveau:AddC.level,nb:AddC.number,anneescolaire:AddC.an}])
-  }
-
-  const changeName=(e)=>{
-    setName(e.target.value)
-  }
-
-  /*const changeLevel=(e)=>{
-    setlevel(e.target.value)
-  }
-
-  const changeNumber=(e)=>{
-    setNumber(e.target.value)
-  }*/
 
   const {
       TblContainer,
@@ -99,14 +87,14 @@ const ClassMangement = () => {
     })
   },[])
 
-  const submitClass=()=>{
+  /*const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
      id:id,name:name,level:level,number:number
     }).then(()=>{
 
       alert('Succ insert!')
     })
-  }
+  }*/
 
   const handleEditClick = (event,val) => {
     event.preventDefault();
@@ -131,57 +119,42 @@ const ClassMangement = () => {
     newData[fieldName]=fieldValue;
   }
 
-  /*const handelEditFormSubmit = (event,id) => {
-    event.preventDefault();
-
-    const editedVal={
-      id: editClassId,
-      name: editFormData.name,
-      level: editFormData.level,
-      number:editFormData.number,
-      year:editFormData.year
-    };
-
-    Axios.put("http://localhost:3000/updateClassname",{
-        nom:newName,id_classe:id
-    });
-      console.log(newName);
-      setNewName("");
-
-    const newClassList=[...classList];
-
-    const index = classList.findIndex((classL) => classL.id_classe === editClassId);
-
-    newClassList[index]=editedVal;
-
-    setClassList(newClassList);
-    setEditClassId(null);
-  };*/
-
   const deleteClass = (id_classe) => {
     Axios.delete(`http://localhost:3000/api/delete/${id_classe}`)
     console.log('deleted');
     console.log(id_classe);
   };
 
-  const updateName=(id)=>{
-    Axios.put("http://localhost:3000/updateClassname",{
-        nom:newName,id_classe:id
+  const updateClassName=(id)=>{
+    Axios.put("http://localhost:3000/updateClassName",{
+        name:newName,id_classe:id
     });
       console.log(newName);
-      setNewName("");
+  }
+
+  const updateClassLevel=(id)=>{
+    Axios.put("http://localhost:3000/updateClassLevel",{
+      level:newLevel,id_classe:id
+    });
+      console.log(newLevel); 
+  }
+
+  const updateClassNumber=(id)=>{
+    Axios.put("http://localhost:3000/updateClassNumber",{
+      number:newNumber,id_classe:id,
+    });
+      console.log(newNumber);
+  }
+
+  const updateClassYear=(id)=>{
+    Axios.put("http://localhost:3000/updateClassYear",{
+      year:newYear,id_classe:id
+    });
+      console.log(newYear);
   }
 
   const handleCancelClick=()=>{
     setEditClassId(null);
-  }
-
-  const handleInputChange=(event)=>{
-    setEditClassId(event.id_classe)
-    setNewName(event.nom);
-    setNewNumber(event.nb)
-    setNewLevel(event.niveau)
-    updateName(editClassId)
   }
 
   return (
@@ -196,13 +169,18 @@ const ClassMangement = () => {
                         <EditableRow 
                           editFormData={editFormData}
                           handleEditChange={handleEditClick}
+                          setNewLevel={setNewLevel}
+                          setNewNumber={setNewNumber}
                           setNewName={setNewName} 
+                          setNewYear={setNewYear}
                           val={val} 
-                          changeName={changeName} 
-                          updateName={updateName}
+                          refreshPage={refreshPage}
+                          updateClassName={updateClassName}
+                          updateClassLevel={updateClassLevel}
+                          updateClassNumber={updateClassNumber}
+                          updateClassYear={updateClassYear}
                           newClassList={newClassList} 
                           handleCancelClick={handleCancelClick}
-                          handleInputChange={handleInputChange}
                           handleEditChange={handleEditChange}
                         /> 
                         ) : (
@@ -222,8 +200,9 @@ const ClassMangement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
-            <AddC changeName={changeName} setOpenPopup={setOpenPopup}/>
-      </Popup>
+            <AddC setOpenPopup={setOpenPopup}/>
+        </Popup>
+        <Notification notify={notify} setNotify={setNotify}/>
     </div>
   );
 }

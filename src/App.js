@@ -27,8 +27,8 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
-import Hello from "./components/hello";
-import Timetablemanagement from "./pages/Timetablemanagement";
+
+import Timetablemanagement from './pages/Administration/TimeTableMangement/Timetablemanagement'
 
 const App = () => {
     return (

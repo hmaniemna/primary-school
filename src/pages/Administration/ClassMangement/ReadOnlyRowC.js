@@ -1,7 +1,9 @@
 import React from 'react';
 import {TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const ReadOnlyRow = ({val,handleEditClick,updateName,deleteClass,refreshPage}) => 
+import Popup from '../../../components/Popup';
+import DeleteC from './DeleteC/DeleteC';
+const ReadOnlyRow = ({val,handleEditClick,deleteClass,refreshPage,openPopup,setOpenPopup}) => 
 {
     return(
         <TableRow key={NavItem.id_classe}>
@@ -25,9 +27,15 @@ const ReadOnlyRow = ({val,handleEditClick,updateName,deleteClass,refreshPage}) =
             <TableCell>{val.anneescolaire}</TableCell> 
             <TableCell>{val.nb}</TableCell>
             <TableCell>{val.nom}</TableCell> 
-            <TableCell>{val.niveau}</TableCell>
-            
+            <TableCell>{val.niveau}</TableCell>  
+            <Popup
+                openPopup={openPopup}
+                setOpenPopup={setOpenPopup}
+            >
+                <DeleteC setOpenPopup={setOpenPopup}/>
+            </Popup> 
         </TableRow>
+        
     );
 };
 
