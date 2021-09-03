@@ -33,14 +33,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-<<<<<<< HEAD
-}));
 
-const AddC = () => {
-=======
-})); 
-const AddT = (props) => {
->>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
+}));
+ 
+const AddC = (props) => {
   const classes = useStyles();
   const [id,setID]=useState('');
   const [name,setName]=useState('');

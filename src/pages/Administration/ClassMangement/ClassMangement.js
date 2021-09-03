@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
+/*import React from "react";
 
 
 const ClassMangement = ()=>{
@@ -37,8 +36,8 @@ const ClassMangement = ()=>{
 
   )
 
-}
-=======
+} */
+
 import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -161,5 +160,5 @@ const ClassMangement = () => {
   );
 }
 
->>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
+
 export default ClassMangement;

@@ -37,6 +37,7 @@ const App = () => {
         <Router>
             <div>
             <Header/>
+            <Statistics/>
           
                 <Switch>
                     <Route path="/" exact component={Home} />
