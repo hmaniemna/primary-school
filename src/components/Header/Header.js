@@ -28,10 +28,13 @@ const Header =()=>{
         <button type="button" class="btn btn-white"  ><a href="/Login/LoginAdmin" className='tinyTitle'> دخول المعلمون</a></button>
         </li>
       </ul>
+<<<<<<< HEAD
 
       <button type="button" class="btn btn-light" ><a href="/Login/LoginAdmin"> دخول الإداريين</a></button>
       <button type="button" class="btn btn-light" ><a href="/Login/LoginTeacher"> دخول المعلمون</a></button> 
 
+=======
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
     </div>
   </div>
 </nav>

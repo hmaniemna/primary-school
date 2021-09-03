@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*import React from "react";
 
 
@@ -38,6 +39,8 @@ const ClassMangement = ()=>{
 
 } */
 
+=======
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
 import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -47,6 +50,9 @@ import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
+import EditableRow from './EditableRowC';
+import ReadOnlyRow from './ReadOnlyRowC';
+import Notification from '../../../components/Notification';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -82,18 +88,35 @@ const headCells=[
 
 const ClassMangement = () => {
   const classes = useStyles();
-  const [id,setID]=useState('');
-  const [name,setName]=useState('');
-  const [level,setlevel]=useState();
-  const [number,setNumber]=useState('');
-  const [classList, setClassList]=useState([]);
-  const [openPopup,setOpenPopup]=useState(false);
+  const [id,setID]=useState(''); 
+  const [editClassId,setEditClassId] = useState(null);
+  const [editFormData,setEditFormData]=useState({
+    name:"",
+    level:"",
+    number:0,
+    year:""
+  })
 
-    function refreshPage() {
-         window.location.reload(false); 
-    }
-  const submitAction=()=>{
-    setClassList([...classList,{nom:AddC.name,niveau:AddC.level,nb:AddC.number,anneescolaire:AddC.an}])
+
+  const [name,setName]=useState('');
+  const [newName,setNewName]=useState('');
+
+  const [level,setlevel]=useState();
+  const [newLevel,setNewLevel]=useState();
+
+  const [number,setNumber]=useState('');
+  const [newNumber,setNewNumber]=useState('');
+
+  const [newYear,setNewYear]=useState('');
+
+  const [classList, setClassList]=useState([]);
+  const [newClassList,setNewClassList]=useState([]);
+
+  const [openPopup,setOpenPopup]=useState(false);
+  const [notify,setNotify]=useState({isOpen:false,message:'',type:''})
+
+  function refreshPage() {
+    window.location.reload(false); 
   }
 
   const {
@@ -106,47 +129,113 @@ const ClassMangement = () => {
       setClassList(response.data)
     })
   },[])
-  const submitClass=()=>{
+
+  /*const submitClass=()=>{
     Axios.post('http://localhost:3000/api/insert',{
      id:id,name:name,level:level,number:number
     }).then(()=>{
 
       alert('Succ insert!')
     })
+  }*/
+
+  const handleEditClick = (event,val) => {
+    event.preventDefault();
+    setEditClassId(val.id_classe);
+
+    const formValues={
+      name:val.nom,
+      level:val.niveau,
+      number:val.nb,
+      year:val.anneescolaire     
+    }
+    setEditFormData(formValues);
+  };
+
+  const handleEditChange=(event)=>{
+    event.preventDefault();
+
+    const fieldName=event.target.getAttribute("name");
+    const fieldValue=event.target.value;
+
+    const newData={...editFormData};
+    newData[fieldName]=fieldValue;
   }
+
   const deleteClass = (id_classe) => {
     Axios.delete(`http://localhost:3000/api/delete/${id_classe}`)
     console.log('deleted');
     console.log(id_classe);
   };
+
+  const updateClassName=(id)=>{
+    Axios.put("http://localhost:3000/updateClassName",{
+        name:newName,id_classe:id
+    });
+      console.log(newName);
+  }
+
+  const updateClassLevel=(id)=>{
+    Axios.put("http://localhost:3000/updateClassLevel",{
+      level:newLevel,id_classe:id
+    });
+      console.log(newLevel); 
+  }
+
+  const updateClassNumber=(id)=>{
+    Axios.put("http://localhost:3000/updateClassNumber",{
+      number:newNumber,id_classe:id,
+    });
+      console.log(newNumber);
+  }
+
+  const updateClassYear=(id)=>{
+    Axios.put("http://localhost:3000/updateClassYear",{
+      year:newYear,id_classe:id
+    });
+      console.log(newYear);
+  }
+
+  const handleCancelClick=()=>{
+    setEditClassId(null);
+  }
+
   return (
     <div>
         <Button class="ui right floated blue basic button" onClick={()=> {setOpenPopup(true)}}>اضافة الاقسام</Button>
-        <TblContainer>
+        <TblContainer >
             <TblHead/>
-            <TableBody>
-                {classList.map((val)=>{
-                    return (
-                        <TableRow key={NavItem.id_classe}>
-                            <TableCell>
-                                <button 
-                                  class="ui red basic button" 
-                                  onClick={() => {
-                                    deleteClass(val.id_classe)
-                                    refreshPage()
-                                  }}
-                                >
-                                  حذف
-                                </button>
-                                <button class="ui blue basic button">تعديل</button>    
-                            </TableCell>    
-                            <TableCell>{val.anneescolaire}</TableCell>
-                            <TableCell>{val.nb}</TableCell>                   
-                            <TableCell>{val.nom}</TableCell>
-                            <TableCell>{val.niveau}</TableCell>      
-                        </TableRow>
-                    )
-                })}
+            <TableBody >
+                {classList.map((val)=>(
+                      <React.Fragment>  
+                        {editClassId === val.id_classe?  ( 
+                        <EditableRow 
+                          editFormData={editFormData}
+                          handleEditChange={handleEditClick}
+                          setNewLevel={setNewLevel}
+                          setNewNumber={setNewNumber}
+                          setNewName={setNewName} 
+                          setNewYear={setNewYear}
+                          val={val} 
+                          refreshPage={refreshPage}
+                          updateClassName={updateClassName}
+                          updateClassLevel={updateClassLevel}
+                          updateClassNumber={updateClassNumber}
+                          updateClassYear={updateClassYear}
+                          newClassList={newClassList} 
+                          handleCancelClick={handleCancelClick}
+                          handleEditChange={handleEditChange}
+                        /> 
+                        ) : (
+                          <ReadOnlyRow val={val}
+                            handleEditClick={handleEditClick} 
+                            deleteClass={deleteClass}
+                            refreshPage={refreshPage}
+                          />
+                        )
+                        }
+                      </React.Fragment>
+                ))}
             </TableBody>
         </TblContainer>
 
@@ -155,10 +244,14 @@ const ClassMangement = () => {
         setOpenPopup={setOpenPopup}
         >
             <AddC setOpenPopup={setOpenPopup}/>
-      </Popup>
+        </Popup>
+        <Notification notify={notify} setNotify={setNotify}/>
     </div>
   );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
 export default ClassMangement;

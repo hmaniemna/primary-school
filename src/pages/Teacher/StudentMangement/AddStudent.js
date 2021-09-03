@@ -1,8 +1,5 @@
-
 import React,{useState,useEffect} from 'react';
 import Axios from 'axios';
-import TeacherManagement from '../TeacherMangement';
-//import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -15,21 +12,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Navbar,NavDropdown,Nav } from "react-bootstrap"
-
-import './AddT.css'
-
-      
-
-/*function RadioButtonsGroup() {
-    const [value, setValue] = React.useState('female');
-  
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
-}*/
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -54,71 +36,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = (props) => {
+const AddStudent = (props) => {
+    const classes = useStyles();
+    const [id,setID]=useState('');
   const [firstName,setFirstName] = useState('');
   const [lastName,setLastName] = useState('');
-  const [userName,setUserName] = useState('');
-  const [password,setPassword] = useState('');
   const [gender,setGender] = useState('female');
-  const [teacherList,setTeacherList] = useState([]);
+  const [birthdate,setBirthDate] = useState(new Date().toISOString().split('T')[0]);
+  const [inscri,setInscri] = useState();
+  
+  const [studentList,setStudentList] = useState([]);
   const {setOpenPopup}=props;
   useEffect(()=>{
-    Axios.get("http://localhost:3000/getTeachers").then((response)=>{
-      setTeacherList(response.data);
+    Axios.get("http://localhost:3000/getStudents").then((response)=>{
+      setStudentList(response.data);
     });
   },[]);
-  const registerTeacher = () => {
-    Axios.post("http://localhost:3000/register",{
-     genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
+  const insertStudent = () => {
+    Axios.post("http://localhost:3000/api/insertStudent",{
+     id:id,firstname:firstName,lastname:lastName,gender:gender,birthdate:birthdate,inscri:inscri
   });
   
-    setTeacherList([...teacherList,
-      {genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password},
-    ]); 
+    /*setStudentList([...studentList,
+      {id:id,firstName:firstName,lastName:lastName,gender:gender,birthdate:birthdate,inscri:inscri},
+    ]); */
   };
-  const firstNameChangeHandler = (e) =>{
-    
-    setFirstName(e.target.value);
-   
-  };
-  const lastNameChangeHandler = (e) =>{
-    setLastName(e.target.value);
-  };
-  const userNameChangeHandler = (e) =>{
-    setUserName(e.target.value);
-  };
-  const passwordChangeHandler = (e) =>{
-  
-    setPassword(e.target.value);
-  };
-  const genderChangeHandler = (e) =>{
-    setGender(e.target.value);
-  };
-<<<<<<< HEAD
-
-
-  const classes = useStyles();
-
- 
 
   function refreshPage() {
     window.location.reload(false); 
   }
-
-
-
-=======
-  const classes = useStyles();
-  function refreshPage() {
-    window.location.reload(false); 
-  }
->>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="body">
-           إضافة المعلمين   
+            اضافة التلاميذ          
         </Typography>
 
         <form className={classes.form} noValidate > 
@@ -133,7 +85,9 @@ const AddT = (props) => {
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-            onChange={firstNameChangeHandler}
+            onChange={(e)=>{
+                setFirstName(e.target.value);
+              }}
           />
           <TextField
             className=""
@@ -147,55 +101,36 @@ const AddT = (props) => {
             autoComplete="lastname"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-            onChange={lastNameChangeHandler}
+            onChange={(e)=>{
+                setLastName(e.target.value)
+              }}
          />
-          <TextField
-            className=""
-            margin="normal"
-            required
-            fullWidth
-            name="username"
-            label="اسم المستخدم"
-            type="username"
-            id="username"
-            autoComplete="username"
-            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-            onChange={userNameChangeHandler}
-
-         />
-
-          <TextField
-            className=""
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="كلمة العبور"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-            inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-            onChange={passwordChangeHandler}
-          />
 
           <br/><br/>
           <div className="radioLeft">
             <React.Fragment>
           <FormControl component="fieldset" >
             <FormLabel  component="legend">الجنس</FormLabel>
-            <RadioGroup  className="radioLeft" row aria-label="gender" name="gender"  onChange={genderChangeHandler}>
+            <RadioGroup  
+                className="radioLeft" 
+                row aria-label="gender" 
+                name="gender"
+                onChange={(e)=>{
+                    console.log("????");
+                    setGender(e.target.value)
+                }}
+            
+            >
                     <FormControlLabel 
                   
-                        value="female" 
+                        value="female"
                         control={<Radio color="grey" />} 
                         labelPlacement="start" 
                         label="أنثى" 
                     />
                     <FormControlLabel 
                 
-                        value="male" 
+                        value="male"
                         control={<Radio color="grey"/>} 
                         
                         labelPlacement="start" 
@@ -206,6 +141,19 @@ const AddT = (props) => {
       </FormControl>
       </React.Fragment>
           </div>
+          <TextField
+            id="date"
+            label="تاريخ الولادة"
+            type="date"
+            className={classes.textField}
+            InputLabelProps={{
+            shrink: true,
+            }}
+            onChange={(e)=>{
+                setBirthDate(e.target.value)
+                console.log(birthdate)
+            }}
+        />
           </form>
       
           <Button
@@ -216,7 +164,7 @@ const AddT = (props) => {
             className={classes.submit}
             onClick={()=>{
               setOpenPopup(false)
-              registerTeacher()
+              insertStudent()
               refreshPage()
             }}
           >
@@ -232,4 +180,4 @@ const AddT = (props) => {
   );
 }
 
-export default AddT;
+export default AddStudent;

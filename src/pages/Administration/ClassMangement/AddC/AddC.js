@@ -7,10 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
-import './AddC.css'
-//import ClassMangement from '../ClassMangement';
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,9 +29,14 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+<<<<<<< HEAD
 
 }));
  
+=======
+}));
+
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
 const AddC = (props) => {
   const classes = useStyles();
   const [id,setID]=useState('');
@@ -52,9 +53,6 @@ const AddC = (props) => {
     Axios.post('http://localhost:3000/api/insert',{
       id:id,name:name,level:level,number:number
     })
-    /*setClassList([...classList,
-      {name:name,level:level,number:number},
-    ]); */
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -125,7 +123,7 @@ const AddC = (props) => {
             onClick={()=>{
               setOpenPopup(false)
               submitClass()
-              refreshPage()
+              
             }}
 
           >

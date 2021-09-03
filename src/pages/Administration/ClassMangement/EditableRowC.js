@@ -2,18 +2,17 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const EditableRow = ({refreshPage,val,updateTeacherFirstname,updateTeacherLastname,updateTeacherGender, updateTeacherUsername, updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,setNewGender,editFormData,handleCancelClick}) => {
+const EditableRow = ({refreshPage,val,updateClassName,updateClassLevel,updateClassNumber,updateClassYear,setNewYear,setNewLevel,setNewNumber,setNewName,editFormData,handleCancelClick}) => {
         return (
-                <TableRow key={NavItem.id_enseignant}>
+                <TableRow key={NavItem.id_classe}>
                         <TableCell>
                                 <button type="submit" class="ui blue basic button"  
                                     onClick={()=>{
-                                        updateTeacherFirstname(val.id_enseignant)
-                                        updateTeacherGender(val.id_enseignant)
-                                        updateTeacherLastname(val.id_enseignant)
-                                        updateTeacherUsername(val.id_enseignant)
-                                        updateTeacherPassword(val.id_enseignant)
-                                        
+                                        updateClassName(val.id_classe)
+                                        updateClassNumber(val.id_classe)
+                                        updateClassLevel(val.id_classe)
+                                        updateClassYear(val.id_classe)
+                                        refreshPage()
                                     }}>
                                         تحديث
                                 </button>  
@@ -29,16 +28,16 @@ const EditableRow = ({refreshPage,val,updateTeacherFirstname,updateTeacherLastna
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="gender"
-                                label=' الجنس'
-                                name="gender"
-                                autoComplete="gender"
+                                id="year"
+                                label="السنة دراسية	"
+                                name="year"
+                                autoComplete="year"
                                 autoFocus
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.gender}
+                                defaultValue={editFormData.year}
                                 onChange={(e)=>{
-                                        setNewGender(e.target.value)    
+                                    setNewYear(e.target.value)    
                                 }}
                             /> 
                         </TableCell>
@@ -47,34 +46,16 @@ const EditableRow = ({refreshPage,val,updateTeacherFirstname,updateTeacherLastna
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="password"
-                                label='كلمة العبور'
-                                name="password"
-                                autoComplete="password"
+                                id="number"
+                                label="عدد التلاميذ"
+                                name="number"
+                                autoComplete="number"
                                 autoFocus
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.password}
+                                defaultValue={editFormData.number}
                                 onChange={(e)=>{
-                                        setNewPassword(e.target.value)    
-                                }}
-                            /> 
-                        </TableCell>
-                        <TableCell>
-                            <TextField 
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="username"
-                                label='إسم المستخدم'
-                                name="username"
-                                autoComplete="username"
-                                autoFocus
-                                InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-                                inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.username}
-                                onChange={(e)=>{
-                                    setNewUsername(e.target.value)    
+                                    setNewNumber(e.target.value)    
                                 }}
                             />    
                         </TableCell> 
@@ -84,16 +65,16 @@ const EditableRow = ({refreshPage,val,updateTeacherFirstname,updateTeacherLastna
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="lastname"
-                                label='اللقب'
-                                type="lastname"
-                                id="lastname"
-                                autoComplete="lastname"
+                                name="name"
+                                label="إسم القسم"
+                                type="name"
+                                id="name"
+                                autoComplete="name"
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.lastname}
+                                defaultValue={editFormData.name}
                                 onChange={(e)=>{
-                                    setNewLastname(e.target.value)    
+                                    setNewName(e.target.value)    
                                 }}
                             />
                         </TableCell>
@@ -102,16 +83,16 @@ const EditableRow = ({refreshPage,val,updateTeacherFirstname,updateTeacherLastna
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="firstname"
-                                label='الاسم'
-                                name="firstname"
-                                autoComplete="firstname"
+                                id="level"
+                                label="مستوى القسم"
+                                name="level"
+                                autoComplete="level"
                                 autoFocus
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.firstname}
+                                defaultValue={editFormData.level}
                                 onChange={(e)=>{
-                                    setNewFirstname(e.target.value)    
+                                    setNewLevel(e.target.value)    
                                 }}
                             />
                         </TableCell> 
