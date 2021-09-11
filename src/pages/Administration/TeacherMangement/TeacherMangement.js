@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Axios from 'axios';
@@ -44,6 +44,7 @@ const headCells=[
     {id:'name', label:'الاسم'},
 ]
 
+<<<<<<< HEAD
 const TeacherMangement = () => {
   const classes = useStyles();
   const [id,setID]=useState(''); 
@@ -74,10 +75,64 @@ const TeacherMangement = () => {
   const [newTeacherList,setNewTeacherList]=useState([]);
 
   const [openPopup,setOpenPopup]=useState(false);
+=======
+<<<<<<< HEAD
+const TeacherManagement = () => {
+    const [id,setID]=useState('');
+    const [firstName,setFirstName] = useState('');
+    const [lastName,setLastName] = useState('');
+    const [userName,setUserName] = useState('');
+    const [password,setPassword] = useState('');
+    const [gender,setGender] = useState('female');
+    const [newFirstName,setNewFirstName] = useState('');
+    const [newLastName,setNewLastName] = useState('');
+    const [newUserName,setNewUserName] = useState('');
+    const [teacherList,setTeacherList] = useState([]);
+    const [newTeacherList,setNewTeacherList] = useState([]);
+    const [editTeacherlogin,setEditTeacherLogin] = useState(null);
+  const [openPopup,setOpenPopup]=useState(false);
+    function refreshPage() {
+      window.location.reload(false); 
+    }
+=======
+const TeacherMangement = () => {
+  const classes = useStyles();
+  const [id,setID]=useState(''); 
+  const [editTeacherId,setEditTeacherId] = useState(null);
+  const [editFormData,setEditFormData]=useState({
+    firstname:"",
+    lastname:"",
+    gender:"",
+    username:"",
+    password:""
+  })
+
+
+  const [firstname,setFirstName]=useState('');
+  const [newFirstname,setNewFirstname]=useState('');
+
+  const [lastname,setLastname]=useState();
+  const [newLastname,setNewLastname]=useState('');
+
+  const [username,setUsername]=useState('');
+  const [newUsername,setNewUsername]=useState('');
+
+  const [newGender,setNewGender]=useState('');
+  const [newPassword,setNewPassword]=useState('');
+
+  const [teacherList, setTeacherList]=useState([]);
+  const [newTeacherList,setNewTeacherList]=useState([]);
+
+  const [openPopup,setOpenPopup]=useState(false);
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
 
   function refreshPage() {
     window.location.reload(false); 
   }
+<<<<<<< HEAD
+=======
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
 
   const {
       TblContainer,
@@ -124,8 +179,13 @@ const TeacherMangement = () => {
     Axios.put("http://localhost:3000/updateTeacherFirstname",{
         firstname:newFirstname,id_enseignant:id
     });
+<<<<<<< HEAD
        
       console.log(newFirstname);
+=======
+      console.log(newFirstname);
+      console.log(id)
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
   }
 
   const updateTeacherLastname=(id)=>{
@@ -164,6 +224,42 @@ const TeacherMangement = () => {
         <Button class="ui right floated blue basic button" onClick={()=> {setOpenPopup(true)}}>اضافةالمعلمــين</Button>
         <TblContainer >
             <TblHead/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <TableBody>
+                {teacherList.map((val)=>{
+                    return (
+                        /*<TableRow key={NavItem.id_classe}>
+                            <TableCell>
+                                <button class="ui red basic button" onClick={() => {deleteTeachers(val.login)}}>حذف</button>
+                                <button class="ui blue basic button"  >تعديل</button>    
+                                <button 
+                                  class="ui red basic button" 
+                                  onClick={() => {
+                                    deleteTeachers(val.login)
+                                    refreshPage()
+                                  }}
+                                >
+                                  حذف
+                                </button>
+                                <button class="ui blue basic button">تعديل</button>    
+
+                            </TableCell>   
+                            <TableCell>{val.genre}</TableCell> 
+                            <TableCell>{val.login}</TableCell>
+                            <TableCell>{val.nom}</TableCell> 
+                            <TableCell>{val.prenom}</TableCell>
+                        </TableRow>*/
+                        <React.Fragment>  
+                          {editTeacherlogin === val.login ?  ( 
+                          <EditableRow setNewFirstName={setNewFirstName} val={val} changeFirstName={changeFirstName} updateFirstName={updateFirstName} newTeacherList={newTeacherList} /> 
+                          ) : (
+                            <ReadOnlyRow val={val}
+                            handleEditClick={handleEditClick} />
+                          )
+=======
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
             <TableBody >
                 {teacherList.map((val)=>(
                       <React.Fragment>  
@@ -176,8 +272,11 @@ const TeacherMangement = () => {
                           setNewGender={setNewGender} 
                           setNewUsername={setNewUsername}
                           setNewPassword={setNewPassword}
+<<<<<<< HEAD
                           setEditFirstname={setEditFirstname}
                           newFirstname={newFirstname}
+=======
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
                           val={val} 
                           refreshPage={refreshPage}
                           updateTeacherFirstname={updateTeacherFirstname}
@@ -196,6 +295,10 @@ const TeacherMangement = () => {
                             refreshPage={refreshPage}
                           />
                         )
+<<<<<<< HEAD
+=======
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
                         }
                       </React.Fragment>
                 ))}
@@ -206,8 +309,22 @@ const TeacherMangement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
+<<<<<<< HEAD
             <AddT setOpenPopup={setOpenPopup}/>
         </Popup>
+=======
+<<<<<<< HEAD
+        
+            
+            <AddT/>
+            <AddT setOpenPopup={setOpenPopup}/> 
+      </Popup>
+    
+=======
+            <AddT setOpenPopup={setOpenPopup}/>
+        </Popup>
+>>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
     </div>
   );
 }

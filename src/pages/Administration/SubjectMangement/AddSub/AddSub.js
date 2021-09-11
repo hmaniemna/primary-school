@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -6,9 +6,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import './AddSub.css'
+import Axios from 'axios';
 
-      
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -32,19 +31,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+<<<<<<< HEAD
 const AddSub = () => {
+=======
+const AddSub= (props) => {
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
   const classes = useStyles();
+  const [id,setID]=useState();
+  const [level,setlevel]=useState();
+  const [wording,setWording]=useState();
+  const {setOpenPopup}=props;
 
+  function refreshPage() {
+    window.location.reload(false); 
+  }
 
+  const submitSubject=()=>{
+    Axios.post('http://localhost:3000/api/insertSub',{
+      id:id,level:level,wording:wording
+    })
+    console.log(level)
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="body">
-           إضافة المــواد   
+          إضافة المواد     
         </Typography>
-        <form className={classes.form} noValidate >
-                      
+        <form className={classes.form} noValidate>
+
         <TextField 
             margin="normal"
             required
@@ -56,19 +72,25 @@ const AddSub = () => {
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={(e)=>{
+              setlevel(e.target.value)
+            }}
           />
           <TextField
             className=""
-            margin="libel"
+            margin="normal"
             required
             fullWidth
-            name="libel"
-            label="إسم المادة "
-            type="libel"
-            id="libel"
-            autoComplete="libel"
+            name="wording"
+            label="الصياغة "
+            type="wording"
+            id="wording"
+            autoComplete="wording"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={(e)=>{
+              setWording(e.target.value)
+            }}
           />
           <br/><br/>
           </form>
@@ -79,11 +101,15 @@ const AddSub = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={submitSubject}
+            onClick={()=>{
+              setOpenPopup(false)
+              submitSubject()  
+            }}
+
           >
             اضافة
           </Button>
-      
-        
       </div>
       <Box mt={8}>
         

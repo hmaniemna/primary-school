@@ -2,11 +2,16 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
+<<<<<<< HEAD
 const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeacherFirstname,updateTeacherLastname,updateTeacherGender, updateTeacherUsername, updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,setNewGender,editFormData,handleCancelClick}) => {
+=======
+const EditableRow = ({refreshPage,val,updateTeacherFirstname,updateTeacherLastname,updateTeacherGender, updateTeacherUsername, updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,setNewGender,editFormData,handleCancelClick}) => {
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
         return (
                 <TableRow key={NavItem.id_enseignant}>
                         <TableCell>
                                 <button type="submit" class="ui blue basic button"  
+<<<<<<< HEAD
                                     onClick={()=>{ if (setEditFirstname)
                                         updateTeacherFirstname(val.id_enseignant);
                                         updateTeacherGender(val.id_enseignant)
@@ -14,6 +19,15 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                          updateTeacherUsername(val.id_enseignant)
                                          updateTeacherPassword(val.id_enseignant)
                                          //refreshPage()
+=======
+                                    onClick={()=>{
+                                        updateTeacherFirstname(val.id_enseignant)
+                                        updateTeacherGender(val.id_enseignant)
+                                        updateTeacherLastname(val.id_enseignant)
+                                        updateTeacherUsername(val.id_enseignant)
+                                        updateTeacherPassword(val.id_enseignant)
+                                        
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
                                     }}>
                                         تحديث
                                 </button>  
@@ -93,9 +107,13 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.lastname}
                                 onChange={(e)=>{
+<<<<<<< HEAD
                     
                                     setNewLastname(e.target.value);
                                     
+=======
+                                    setNewLastname(e.target.value)    
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
                                 }}
                             />
                         </TableCell>
@@ -112,10 +130,15 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.firstname}
+<<<<<<< HEAD
                                 onChange={(e)=>{ 
                                     if(e.target.value.length>0){
                                         setEditFirstname(true);
                                         setNewFirstname(e.target.value);}
+=======
+                                onChange={(e)=>{
+                                    setNewFirstname(e.target.value)    
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
                                 }}
                             />
                         </TableCell> 

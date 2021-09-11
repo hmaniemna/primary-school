@@ -27,9 +27,14 @@ import StudentMangement from './pages/Teacher/StudentMangement/StudentMangement'
 import Timetable from './pages/Teacher/Timetable/Timetable';
 import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
+<<<<<<< HEAD
 import Hello from "./components/hello";
 import Timetablemanagement from "./pages/Timetablemanagement";
 import AddSub from "./pages/Administration/SubjectMangement/AddSub/AddSub";
+=======
+
+import Timetablemanagement from './pages/Administration/TimeTableMangement/Timetablemanagement'
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
 
 const App = () => {
     return (
@@ -38,6 +43,11 @@ const App = () => {
         <Router>
             <div>
             <Header/>
+<<<<<<< HEAD
+=======
+            <Statistics/>
+          
+>>>>>>> 04a225d03b638b34ee940213a923e808503a051a
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
