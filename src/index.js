@@ -9,6 +9,7 @@ import { StylesProvider, ThemeProvider, jssPreset } from "@material-ui/styles";
 import { create } from "jss";
 import rtl from "jss-rtl";
 import './index.css'
+import Timetablemanagement from './pages/Timetablemanagement';
 
 
 //ReactDOM.render(<App/>, document.querySelector('#root'));
@@ -16,7 +17,7 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
     const theme = createMuiTheme({
       direction: "rtl"
     });
-    
+    console.log('timetable', Timetablemanagement);
     ReactDOM.render(
       <StylesProvider jss={jss}>
         <ThemeProvider theme={theme}>

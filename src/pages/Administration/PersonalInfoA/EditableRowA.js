@@ -2,18 +2,17 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeacherFirstname,updateTeacherLastname,updateTeacherGender, updateTeacherUsername, updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,setNewGender,editFormData,handleCancelClick}) => {
+const EditableRowA = ({refreshPage,setEditLastname,setEditEmail,setEditPassword,setEditFirstname,val,updateAdminFirstname, updateAdminLastname,updateAdminEmail, updateAdminPassword,setNewPassword,setNewFirstname,setNewEmail,setNewLastname,editFormData,handleCancelClick}) => {
         return (
-                <TableRow key={NavItem.id_enseignant}>
+                <TableRow key={NavItem.id_dir}>
                         <TableCell>
                                 <button type="submit" class="ui blue basic button"  
                                     onClick={()=>{ if (setEditFirstname)
-                                        updateTeacherFirstname(val.id_enseignant);
-                                        updateTeacherGender(val.id_enseignant)
-                                        updateTeacherLastname(val.id_enseignant)
-                                         updateTeacherUsername(val.id_enseignant)
-                                         updateTeacherPassword(val.id_enseignant)
-                                         //refreshPage()
+                                        updateAdminFirstname(val.id_dir);
+                                        updateAdminLastname(val.id_dir)
+                                        updateAdminEmail(val.id_dir)
+                                        updateAdminPassword(val.id_dir)
+                                         refreshPage()
                                     }}>
                                         تحديث
                                 </button>  
@@ -29,24 +28,6 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="gender"
-                                label=' الجنس'
-                                name="gender"
-                                autoComplete="gender"
-                                autoFocus
-                                InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-                                inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.gender}
-                                onChange={(e)=>{
-                                        setNewGender(e.target.value)    
-                                }}
-                            /> 
-                        </TableCell>
-                        <TableCell>
-                            <TextField 
-                                margin="normal"
-                                required
-                                fullWidth
                                 id="password"
                                 label='كلمة العبور'
                                 name="password"
@@ -56,7 +37,9 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.password}
                                 onChange={(e)=>{
-                                        setNewPassword(e.target.value)    
+                                    if(e.target.value.length>0){
+                                        setEditPassword(true)
+                                        setEditPassword(e.target.value);}       
                                 }}
                             /> 
                         </TableCell>
@@ -65,16 +48,18 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="username"
-                                label='إسم المستخدم'
-                                name="username"
-                                autoComplete="username"
+                                id="email"
+                                label='البريد الإلكتروني'
+                                name="email"
+                                autoComplete="email"
                                 autoFocus
                                 InputLabelProps={{style: {fontFamily:'Tajawal'}}}
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.username}
+                                defaultValue={editFormData.email}
                                 onChange={(e)=>{
-                                    setNewUsername(e.target.value)    
+                                    if(e.target.value.length>0){
+                                     setEditEmail(true)
+                                     setEditEmail(e.target.value);}   
                                 }}
                             />    
                         </TableCell> 
@@ -93,8 +78,9 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
                                 defaultValue={editFormData.lastname}
                                 onChange={(e)=>{
-                    
-                                    setNewLastname(e.target.value);
+                                    if(e.target.value.length>0){
+                                        setEditLastname(true)
+                                    setNewLastname(e.target.value);}
                                     
                                 }}
                             />
@@ -125,4 +111,4 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
         );
 };
 
-export default EditableRow;
+export default EditableRowA;

@@ -1,31 +1,19 @@
-import React from 'react';
+import React,{useState} from 'react';
+import Axios from 'axios';
+import { useHistory } from 'react-router';
+import { useAlert } from 'react-alert'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-//import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Error from './error';
 
-
-/*function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}*/
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -47,7 +34,49 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginAdmin = () => {
+
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const [loginstatus,setLoginstatus] = useState("");
+  const [test,setTest]=useState()
+  const emailChangeHandler = (e) =>{
+    setEmail(e.target.value);
+  };
+  const passwordChangeHandler = (e) =>{
+    setPassword(e.target.value);
+  };
+   const Login = () => {
+      Axios.post("http://localhost:3000/loginAdmin",{
+       email:email,mdp:password}).then((response)=>{
+         if(response.data.message) {
+          setTest(false)
+          setLoginstatus(response.data.message)
+         } else {
+          setTest(true)
+          setLoginstatus(response.data[0].email)   
+         }
+       
+        
+       });
+
+   };
+
   const classes = useStyles();
+  let history=useHistory()
+   const alertadmin = () => {
+     return (
+      <div class="alert alert-primary" role="alert">
+      This is a primary alert—check it out!
+    </div>
+     );
+   };
+  const handelClick=()=>{
+    if(test){
+      history.push('/admin')
+    }else{
+      alert('non');
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -57,7 +86,7 @@ const LoginAdmin = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="body">
-      تسجيل دخـول الإداريــيــن
+          تسجيل دخــول الإداريـيـن
         </Typography>
         <form className={classes.form} noValidate>
             
@@ -72,6 +101,7 @@ const LoginAdmin = () => {
             autoFocus
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
+            onChange={emailChangeHandler}
           />
           <TextField
             className=""
@@ -85,14 +115,18 @@ const LoginAdmin = () => {
             autoComplete="current-password"
             InputLabelProps={{style: {fontFamily:'Tajawal'}}}
             inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          />
-        
+            onChange={passwordChangeHandler}
+         />
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={()=>{
+              Login()
+              handelClick()
+            }}
           >
             دخول
           </Button>
@@ -102,10 +136,10 @@ const LoginAdmin = () => {
                 هل نسيت كلمة العبور؟
               </Link>
             </Grid>
-          
           </Grid>
         </form>
       </div>
+      <h1>{loginstatus}</h1>
     </Container>
   );
 }

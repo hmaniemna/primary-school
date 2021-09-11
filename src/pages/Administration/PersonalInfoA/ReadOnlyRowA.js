@@ -1,7 +1,7 @@
 import React from 'react';
 import {TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) => 
+const ReadOnlyRowA = ({val,handleEditClick,refreshPage}) => 
 {
     return(
         <TableRow key={NavItem.id_enseignant}>
@@ -13,18 +13,9 @@ const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) =>
                 >
                     تعديل
                 </button> 
-                <button class="ui red basic button"
-                    onClick={()=>{
-                        deleteTeacher(val.id_enseignant)
-                        refreshPage()
-                    }}
-                >
-                    حذف
-                </button>
             </TableCell>    
-            <TableCell>{val.genre}</TableCell> 
             <TableCell>{val.mdp}</TableCell>
-            <TableCell>{val.login}</TableCell> 
+            <TableCell>{val.email}</TableCell> 
             <TableCell>{val.nom}</TableCell>
             <TableCell>{val.prenom}</TableCell>
             
@@ -33,4 +24,4 @@ const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) =>
 };
 
 
-export default ReadOnlyRow;
+export default ReadOnlyRowA;

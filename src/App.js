@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from "./components/Header/Header";
-
+import Table from "./pages/Login/Timetable/ourTable";
 import Administration from "./pages/Administration/Administration";
 
 import ClassMangement from "./pages/Administration/ClassMangement/ClassMangement";
@@ -11,7 +11,7 @@ import AddC from "./pages/Administration/ClassMangement/AddC/AddC";
 import PersonalInfoA from "./pages/Administration/PersonalInfoA/PersonalInfoA";
 
 import SubjectMangement from "./pages/Administration/SubjectMangement/SubjectMangement";
-import AddSub from "./pages/Administration/SubjectMangement/AddSub/AddSub";
+
 
 import TeacherMangement from "./pages/Administration/TeacherMangement/TeacherMangement";
 import AddT from "./pages/Administration/TeacherMangement/AddT/AddT";
@@ -29,6 +29,7 @@ import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
 import Hello from "./components/hello";
 import Timetablemanagement from "./pages/Timetablemanagement";
+import AddSub from "./pages/Administration/SubjectMangement/AddSub/AddSub";
 
 const App = () => {
     return (
@@ -37,13 +38,11 @@ const App = () => {
         <Router>
             <div>
             <Header/>
-          
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/admin" exact component={Administration} />
                     <Route path="/admin/infos" exact component={PersonalInfoA} />
                     <Route path="/admin/classmanagement" exact component={ClassMangement} />
-                    <Route path="/admin/classmanagemnet" exact component={ClassMangement} />
                     <Route path='/admin/classmanagemnet/addc' exact component={AddC}/>
                     <Route path="/admin/teachermanagemnet" exact component={TeacherMangement} />
                     <Route path='/admin/teachermanagemnet/addt' exact component={AddT}/>
@@ -53,8 +52,8 @@ const App = () => {
                     <Route path="/admin/timetablemanagemnet" exact component={Timetablemanagement} />
                     <Route path="/admin/tools" exact component={Toolbox} />
 
-                    <Route path="/teacher" exact component={Teacher} />
-                    <Route path="/teacher/infos" exact component={PersonalInfoT} />
+                    <Route path="/teacher/:id" exact component={Teacher} />
+                    <Route path="/infos/:id" exact component={PersonalInfoT} />
                     <Route path="/teacher/presence" exact component={Presence} />
                     <Route path="/teacher/stat" exact component={Statistics} />
                     <Route path="/teacher/studentmangement" exact component={StudentMangement} />

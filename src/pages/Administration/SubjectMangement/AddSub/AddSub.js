@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddT = () => {
+const AddSub = () => {
   const classes = useStyles();
 
 
@@ -92,4 +92,4 @@ const AddT = () => {
   );
 }
 
-export default AddT;
+export default AddSub;

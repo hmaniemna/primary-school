@@ -68,10 +68,9 @@ const AddT = (props) => {
     });
   },[]);
   const registerTeacher = () => {
-    Axios.post("http://localhost:3000/register",{
+    Axios.post("http://localhost:3000/registerTeacher",{
      genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
   });
-  
     setTeacherList([...teacherList,
       {genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password},
     ]); 
@@ -94,18 +93,15 @@ const AddT = (props) => {
   const genderChangeHandler = (e) =>{
     setGender(e.target.value);
   };
-<<<<<<< HEAD
 
-  const classes = useStyles();
 
  
-=======
   function refreshPage() {
     window.location.reload(false); 
   }
 
   const classes = useStyles();
->>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -211,6 +207,7 @@ const AddT = (props) => {
               setOpenPopup(false)
               registerTeacher()
               refreshPage()
+             
             }}
           >
             اضافة

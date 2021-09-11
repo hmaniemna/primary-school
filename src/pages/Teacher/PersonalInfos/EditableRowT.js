@@ -1,19 +1,18 @@
-import React from 'react';
+/*import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeacherFirstname,updateTeacherLastname,updateTeacherGender, updateTeacherUsername, updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,setNewGender,editFormData,handleCancelClick}) => {
+const EditableRowT = ({newFirstname,refreshPage,setEditFirstname,val,updateTeacherFirstname, updateTeacherUsername,updateTeacherLastname,updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,editFormData,handleCancelClick}) => {
         return (
-                <TableRow key={NavItem.id_enseignant}>
+                <TableRow key={NavItem.id_dir}>
                         <TableCell>
                                 <button type="submit" class="ui blue basic button"  
                                     onClick={()=>{ if (setEditFirstname)
                                         updateTeacherFirstname(val.id_enseignant);
-                                        updateTeacherGender(val.id_enseignant)
                                         updateTeacherLastname(val.id_enseignant)
                                          updateTeacherUsername(val.id_enseignant)
                                          updateTeacherPassword(val.id_enseignant)
-                                         //refreshPage()
+                                         refreshPage()
                                     }}>
                                         تحديث
                                 </button>  
@@ -23,24 +22,6 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
                                 >
                                         إلغاء   
                                 </button>  
-                        </TableCell>
-                        <TableCell>
-                            <TextField 
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="gender"
-                                label=' الجنس'
-                                name="gender"
-                                autoComplete="gender"
-                                autoFocus
-                                InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-                                inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-                                defaultValue={editFormData.gender}
-                                onChange={(e)=>{
-                                        setNewGender(e.target.value)    
-                                }}
-                            /> 
                         </TableCell>
                         <TableCell>
                             <TextField 
@@ -125,4 +106,32 @@ const EditableRow = ({newFirstname,refreshPage,setEditFirstname,val,updateTeache
         );
 };
 
-export default EditableRow;
+export default EditableRowT;*/
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import { TableBody, TableRow,TableCell } from '@material-ui/core';
+import { NavItem } from 'react-bootstrap';
+const EditableRowT = ({newFirstname,refreshPage,setEditFirstname,val,updateTeacherFirstname, updateTeacherUsername,updateTeacherLastname,updateTeacherPassword,setNewPassword,setNewFirstname,setNewUsername,setNewLastname,editFormData,handleCancelClick}) => {
+        return (
+            <div>
+                                <button type="submit" class="ui blue basic button"  
+                                    onClick={()=>{ 
+                                        updateTeacherFirstname(val.id_enseignant);
+                                        updateTeacherLastname(val.id_enseignant)
+                                         updateTeacherUsername(val.id_enseignant)
+                                         updateTeacherPassword(val.id_enseignant)
+                                         refreshPage()
+                                    }}>
+                                        تحديث
+                                </button>  
+                                <button 
+                                    class="ui red basic button"
+                                    onClick={handleCancelClick}
+                                >
+                                        إلغاء   
+                                </button>  
+                                </div>
+                                );
+};
+
+export default EditableRowT;

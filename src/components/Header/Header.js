@@ -20,19 +20,18 @@ const Header =()=>{
       </ul>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" className="title">
-<<<<<<< HEAD
+
     <ul class="navbar-nav me-auto">
         <li class="nav-item active">
         <button type="button" class="btn btn-white"  ><a href="/Login/LoginAdmin" className='tinyTitle'> دخول الإداريين</a></button>
         </li>
         <li class="nav-item">
-        <button type="button" class="btn btn-white"  ><a href="/Login/LoginAdmin" className='tinyTitle'> دخول المعلمون</a></button>
+        <button type="button" class="btn btn-white"  ><a href="/Login/LoginTeacher" className='tinyTitle'> دخول المعلمون</a></button>
         </li>
       </ul>
-=======
-      <button type="button" class="btn btn-light" ><a href="/Login/LoginAdmin"> دخول الإداريين</a></button>
-      <button type="button" class="btn btn-light" ><a href="/Login/LoginTeacher"> دخول المعلمون</a></button> 
->>>>>>> 3b85dd4f817b20e92f63efa318f6dcb0422fc125
+
+      
+
     </div>
   </div>
 </nav>

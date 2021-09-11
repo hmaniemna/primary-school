@@ -6,9 +6,9 @@ import useTable from '../../../components/useTable';
 import { TableBody, TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
-import AddT from './AddT/AddT';
-import ReadOnlyRow from './ReadOnlyRow';
+import AddT from './AddT/AddT'
 import EditableRow from './EditableRow';
+import ReadOnlyRow from './ReadOnlyRow';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,121 +36,169 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const headCells=[
-    {id:'gender', label:'الجنس'},
-    {id:'mdp', label:'كلمة العبور'},
-    {id:'login', label:'إسم المستخدم'},
-    {id:'lastname', label:'الـلقب'},
-    {id:'firstname', label:'الإسم'},
-    {id:'actions',label:'الإجراءات'},
+    {id:'actions',label:'أجراءات'},
+    {id:'year', label:' الجنس'},
+    {id:'year', label:'كلمة العبور'},
+    {id:'number', label:'إسم المستخدم'},
+    {id:'level', label:'اللقب'},
+    {id:'name', label:'الاسم'},
 ]
 
-const TeacherManagement = () => {
-    const [id,setID]=useState('');
-    const [firstName,setFirstName] = useState('');
-    const [lastName,setLastName] = useState('');
-    const [userName,setUserName] = useState('');
-    const [password,setPassword] = useState('');
-    const [gender,setGender] = useState('female');
-    const [newFirstName,setNewFirstName] = useState('');
-    const [newLastName,setNewLastName] = useState('');
-    const [newUserName,setNewUserName] = useState('');
-    const [teacherList,setTeacherList] = useState([]);
-<<<<<<< HEAD
-    const [newTeacherList,setNewTeacherList] = useState([]);
-    const [editTeacherlogin,setEditTeacherLogin] = useState(null);
+const TeacherMangement = () => {
+  const classes = useStyles();
+  const [id,setID]=useState(''); 
+  const [editTeacherId,setEditTeacherId] = useState(null);
+  const [editFormData,setEditFormData]=useState({
+    firstname:"",
+    lastname:"",
+    gender:"",
+    username:"",
+    password:""
+  })
+
+
+  const [firstname,setFirstname]=useState('');
+  const [newFirstname,setNewFirstname]=useState('');
+
+  const [level,setlevel]=useState();
+  const [newLastname,setNewLastname]=useState('');
+
+  const [number,setNumber]=useState('');
+  const [newUsername,setNewUsername]=useState('');
+
+  const [newGender,setNewGender]=useState('');
+  const [newPassword,setNewPassword]=useState('');
+  const [editFirstname,setEditFirstname]=useState(false);
+
+  const [teacherList, setTeacherList]=useState([]);
+  const [newTeacherList,setNewTeacherList]=useState([]);
+
   const [openPopup,setOpenPopup]=useState(false);
-=======
-    const [openPopup,setOpenPopup]=useState(false);
-    function refreshPage() {
-      window.location.reload(false); 
-    }
->>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
+
+  function refreshPage() {
+    window.location.reload(false); 
+  }
 
   const {
       TblContainer,
       TblHead
     }=useTable(teacherList,headCells);
 
-    useEffect(()=>{
-        Axios.get("http://localhost:3000/getTeachers").then((response)=>{
-          setTeacherList(response.data);
-        });
-      },[]);
-      const registerTeacher = () => {
-        Axios.post("http://localhost:3000/registerTeacher",{
-         id_classe:id,genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password
-      });
-      
-        setTeacherList([...teacherList,
-          {genre:gender,prenom:firstName,nom:lastName,login:userName,mdp:password},
-        ]); 
-      };
-      const deleteTeachers = (log) => {
-        Axios.delete(`http://localhost:3000/deleteTeacher/${log}`)
-      };
-    const handleEditClick = (event,val) => {
-        event.preventDefault();
-        setEditTeacherLogin(val.login);
-    };
-    const changeFirstName = (e) => {
-      setNewFirstName(e.target.value);
-      console.log('????');
-    };
-    const updateFirstName = (logint) => {
-      Axios.put("http://localhost:3000/updateFirstname",{
-        prenom:newFirstName,login:logint
-      });
-      console.log(newFirstName);
-      /*setNewTeacherList([...teacherList,
-        {genre:gender,prenom:newFirstName,nom:lastName,login:userName,mdp:password},
-      ]); */
-  
-      setNewFirstName("");
-    };
+  useEffect(()=>{
+    Axios.get("http://localhost:3000/getTeachers").then((response)=>{
+      setTeacherList(response.data)
+    })
+  },[])
+
+  const handleEditClick = (event,val) => {
+    event.preventDefault();
+    setEditTeacherId(val.id_enseignant);
+
+    const formValues={
+      firstname:val.prenom,
+      lastname:val.nom,
+      gender:val.genre,
+      username:val.login,
+      password:val.mdp     
+    }
+    setEditFormData(formValues);
+  };
+
+  const handleEditChange=(event)=>{
+    event.preventDefault();
+
+    const fieldName=event.target.getAttribute("name");
+    const fieldValue=event.target.value;
+
+    const newData={...editFormData};
+    newData[fieldName]=fieldValue;
+  }
+
+  const deleteTeacher = (id_enseignant) => {
+    Axios.delete(`http://localhost:3000/deleteTeacher/${id_enseignant}`)
+    console.log('deleted');
+    console.log(id_enseignant);
+  };
+
+  const updateTeacherFirstname=(id)=>{
+    Axios.put("http://localhost:3000/updateTeacherFirstname",{
+        firstname:newFirstname,id_enseignant:id
+    });
+       
+      console.log(newFirstname);
+  }
+
+  const updateTeacherLastname=(id)=>{
+    Axios.put("http://localhost:3000/updateTeacherLastname",{
+      lastname:newLastname,id_enseignant:id
+    });
+      console.log(newLastname); 
+  }
+
+  const updateTeacherGender=(id)=>{
+    Axios.put("http://localhost:3000/updateTeacherGender",{
+      gender:newGender,id_enseignant:id,
+    });
+      console.log(newGender);
+  }
+
+  const updateTeacherUsername=(id)=>{
+    Axios.put("http://localhost:3000/updateTeacherUsername",{
+      username:newUsername,id_enseignant:id
+    });
+      console.log(newUsername);
+  }
+  const updateTeacherPassword=(id)=>{
+    Axios.put("http://localhost:3000/updateTeacherPassword",{
+      password:newPassword,id_enseignant:id
+    });
+      console.log(newPassword);
+  }
+
+  const handleCancelClick=()=>{
+    setEditTeacherId(null);
+  }
+
   return (
     <div>
-        <Button class="ui right floated blue basic button" onClick={()=> setOpenPopup(true)}>
-          إضـافَة المُعلمين
-        </Button>
-        <TblContainer>
+        <Button class="ui right floated blue basic button" onClick={()=> {setOpenPopup(true)}}>اضافةالمعلمــين</Button>
+        <TblContainer >
             <TblHead/>
-            <TableBody>
-                {teacherList.map((val)=>{
-                    return (
-                        /*<TableRow key={NavItem.id_classe}>
-                            <TableCell>
-<<<<<<< HEAD
-                                <button class="ui red basic button" onClick={() => {deleteTeachers(val.login)}}>حذف</button>
-                                <button class="ui blue basic button"  >تعديل</button>    
-=======
-                                <button 
-                                  class="ui red basic button" 
-                                  onClick={() => {
-                                    deleteTeachers(val.login)
-                                    refreshPage()
-                                  }}
-                                >
-                                  حذف
-                                </button>
-                                <button class="ui blue basic button">تعديل</button>    
->>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
-                            </TableCell>   
-                            <TableCell>{val.genre}</TableCell> 
-                            <TableCell>{val.login}</TableCell>
-                            <TableCell>{val.nom}</TableCell> 
-                            <TableCell>{val.prenom}</TableCell>
-                        </TableRow>*/
-                        <React.Fragment>  
-                          {editTeacherlogin === val.login ?  ( 
-                          <EditableRow setNewFirstName={setNewFirstName} val={val} changeFirstName={changeFirstName} updateFirstName={updateFirstName} newTeacherList={newTeacherList} /> 
-                          ) : (
-                            <ReadOnlyRow val={val}
-                            handleEditClick={handleEditClick} />
-                          )
+            <TableBody >
+                {teacherList.map((val)=>(
+                      <React.Fragment>  
+                        {editTeacherId === val.id_enseignant?  ( 
+                        <EditableRow 
+                          editFormData={editFormData}
+                          handleEditChange={handleEditClick}
+                          setNewFirstname={setNewFirstname}
+                          setNewLastname={setNewLastname}
+                          setNewGender={setNewGender} 
+                          setNewUsername={setNewUsername}
+                          setNewPassword={setNewPassword}
+                          setEditFirstname={setEditFirstname}
+                          newFirstname={newFirstname}
+                          val={val} 
+                          refreshPage={refreshPage}
+                          updateTeacherFirstname={updateTeacherFirstname}
+                          updateTeacherLastname={updateTeacherLastname}
+                          updateTeacherGender={updateTeacherGender}
+                          updateTeacherUsername={updateTeacherUsername}
+                          updateTeacherPassword={updateTeacherPassword}
+                          newTeacherList={newTeacherList} 
+                          handleCancelClick={handleCancelClick}
+                          handleEditChange={handleEditChange}
+                        /> 
+                        ) : (
+                          <ReadOnlyRow val={val}
+                            handleEditClick={handleEditClick} 
+                            deleteTeacher={deleteTeacher}
+                            refreshPage={refreshPage}
+                          />
+                        )
                         }
-                        </React.Fragment>
-                    )
-                })}
+                      </React.Fragment>
+                ))}
             </TableBody>
         </TblContainer>
 
@@ -158,16 +206,10 @@ const TeacherManagement = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
         >
-<<<<<<< HEAD
-            
-            <AddT />
-=======
             <AddT setOpenPopup={setOpenPopup}/>
->>>>>>> d1774fbbafc11c26d216c5d4e65b98b56aa3044d
-      </Popup>
-    
+        </Popup>
     </div>
   );
 }
 
-export default TeacherManagement;
+export default TeacherMangement;
