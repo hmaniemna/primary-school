@@ -22,20 +22,9 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "axios": "^0.21.1",
-<<<<<<< HEAD
     "bootstrap": "^5.0.2",
     "concurrently": "^6.2.1",
     "date-fns": "^2.23.0",
-=======
-<<<<<<< HEAD
-    "concurrently": "^6.2.1",
-    "date-fns": "^2.0.0",
-=======
-    "bootstrap": "^5.0.2",
-    "concurrently": "^6.2.1",
-    "date-fns": "^2.23.0",
->>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
     "jss-rtl": "^0.3.0",
     "mobiscroll-react": "^4.0.0",
     "react": "^17.0.2",

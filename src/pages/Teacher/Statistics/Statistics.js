@@ -1,5 +1,5 @@
 //import Chart from 'chart.js'
-window.chart = require('chart.js');
+/*window.chart = require('chart.js');
 let labels1 = ['YES', 'YES BUT IN GREEN'];
 let data1 = [69, 31];
 let colors1 = ['#49A9EA', '#36CAAB'];
@@ -107,4 +107,4 @@ let chart4 = new Chart(myChart4, {
             display: true
         }
     }
-});
+});*/

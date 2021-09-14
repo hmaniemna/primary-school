@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-/*import React from "react";
-
-
-const ClassMangement = ()=>{
-  return (
-    <table class="ui compact celled definition table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>مستوى القسم</th>
-      <th>إسم القسم</th>
-      <th>عدد التلاميذ</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-
-  </tbody>
-  <tfoot class="full-width">
-    <tr>
-      <th></th>
-      <th colspan="4">
-        <div class="ui right floated small primary labeled icon button">
-          <i class="user icon"></i> Add User
-        </div>
-        <div class="ui small button">
-          Approve
-        </div>
-        <div class="ui small  disabled button">
-          Approve All
-        </div>
-      </th>
-    </tr>
-  </tfoot>
-</table>
-
-  )
-
-} */
-
-=======
->>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
 import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -55,10 +9,7 @@ import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
 import EditableRow from './EditableRowC';
 import ReadOnlyRow from './ReadOnlyRowC';
-<<<<<<< HEAD
-=======
-import Notification from '../../../components/Notification';
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -251,20 +202,8 @@ const ClassMangement = () => {
         >
             <AddC setOpenPopup={setOpenPopup}/>
         </Popup>
-<<<<<<< HEAD
-
-=======
-        <Notification notify={notify} setNotify={setNotify}/>
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
     </div>
   );
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
 export default ClassMangement;

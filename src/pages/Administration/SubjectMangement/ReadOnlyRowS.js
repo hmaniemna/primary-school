@@ -5,7 +5,7 @@ import Popup from '../../../components/Popup';
 const ReadOnlyRow = ({val,handleEditClick,deleteSubject,refreshPage,openPopup,setOpenPopup}) => 
 {
     return(
-        <TableRow key={NavItem.id_classe}>
+        <TableRow key={NavItem.id_matiere}>
             <TableCell>
                 <button type="button" class="ui blue basic button"  
                       onClick={(event)=>{

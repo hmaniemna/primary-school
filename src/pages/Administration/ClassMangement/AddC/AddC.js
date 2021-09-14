@@ -29,23 +29,14 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-<<<<<<< HEAD
 
 }));
+
+
+
 
 const AddC = (props) => {
 
-=======
-<<<<<<< HEAD
-
-}));
- 
-=======
-}));
-
->>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
-const AddC = (props) => {
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
   const classes = useStyles();
   const [id,setID]=useState('');
   const [name,setName]=useState('');

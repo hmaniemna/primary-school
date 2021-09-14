@@ -31,11 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-<<<<<<< HEAD
-const AddSub = () => {
-=======
 const AddSub= (props) => {
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
   const classes = useStyles();
   const [id,setID]=useState();
   const [level,setlevel]=useState();

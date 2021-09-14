@@ -94,32 +94,10 @@ const AddT = (props) => {
     setGender(e.target.value);
   };
 
-<<<<<<< HEAD
-
- 
-=======
-
   const classes = useStyles();
-
- 
-
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
   function refreshPage() {
     window.location.reload(false); 
   }
-
-
-
-=======
-  const classes = useStyles();
-<<<<<<< HEAD
-
-=======
-  function refreshPage() {
-    window.location.reload(false); 
-  }
->>>>>>> 290eba09050be8f8ca10825ee25b9df50eb2b8da
->>>>>>> 04a225d03b638b34ee940213a923e808503a051a
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

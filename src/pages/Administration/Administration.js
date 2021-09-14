@@ -50,7 +50,7 @@ const Administration = () => (
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/admin/timetablemanagemnet" style={{fontFamily:'Tajawal',marginLeft: '5rem' }}>التّصرّف في جدول الأوقات </a>
+                        <a class="header" href="/admin/teachertimetable" style={{fontFamily:'Tajawal',marginLeft: '5rem' }}>التّصرّف في جدول الأوقات </a>
                     </div>
                 </div>
             </div>

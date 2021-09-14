@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import Popup from '../../../components/Popup';
@@ -23,9 +23,8 @@ const ReadOnlyRow = ({val,handleEditClick,deleteStudent,refreshPage,openPopup,se
                     حذف
                 </button>
             </TableCell>    
-            
             <TableCell>{val.sexe}</TableCell>
-            <TableCell>{val.date_naissance}</TableCell> 
+            <TableCell>{val.date_naissance.split('T')[0]}</TableCell> 
             <TableCell>{val.nom}</TableCell> 
             <TableCell>{val.prenom}</TableCell> 
             <TableCell>{val.id_eleve}</TableCell> 

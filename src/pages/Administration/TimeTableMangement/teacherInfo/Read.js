@@ -1,8 +1,7 @@
 import React from 'react';
 import {TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-import { green } from '@material-ui/core/colors';
-const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) => 
+const Read = ({val}) => 
 {
     return(
         <TableRow key={NavItem.id_enseignant}>
@@ -14,21 +13,6 @@ const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) =>
                     جدول الاوقات
                     </a>
                 </button>  
-                <button type="button" class="ui blue basic button"  
-                    onClick={(event)=>{
-                        handleEditClick(event,val)
-                    }}
-                >
-                    تعديل
-                </button> 
-                <button class="ui red basic button"
-                    onClick={()=>{
-                        deleteTeacher(val.id_enseignant)
-                        refreshPage()
-                    }}
-                >
-                    حذف
-                </button>
             </TableCell>    
             <TableCell>{val.genre}</TableCell> 
             <TableCell>{val.mdp}</TableCell>
@@ -41,4 +25,4 @@ const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) =>
 };
 
 
-export default ReadOnlyRow;
+export default Read;
