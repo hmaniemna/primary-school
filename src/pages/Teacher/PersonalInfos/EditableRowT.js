@@ -118,9 +118,9 @@ const EditableRowT = ({newFirstname,refreshPage,setEditFirstname,val,updateTeach
                                     onClick={()=>{ 
                                         updateTeacherFirstname(val.id_enseignant);
                                         updateTeacherLastname(val.id_enseignant)
-                                         updateTeacherUsername(val.id_enseignant)
-                                         updateTeacherPassword(val.id_enseignant)
-                                         refreshPage()
+                                        updateTeacherUsername(val.id_enseignant)
+                                        updateTeacherPassword(val.id_enseignant)
+                                        refreshPage()
                                     }}>
                                         تحديث
                                 </button>  
