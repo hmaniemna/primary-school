@@ -7,6 +7,13 @@ const ReadOnlyRow = ({val,handleEditClick,deleteStudent,refreshPage,openPopup,se
     return(
         <TableRow key={NavItem.id_eleve}>
             <TableCell>
+                <button type="button" class="ui green basic button"  
+                    
+                >
+                    <a href={`/teacher/studentassignment/${val.id_eleve}`}>
+                    تعيين القسم
+                    </a>
+                </button> 
                 <button type="button" class="ui blue basic button"  
                     onClick={(event)=>{
                         handleEditClick(event,val)

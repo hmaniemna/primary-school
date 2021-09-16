@@ -32,7 +32,7 @@ const Teacher = () => {
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/studentmangement" style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}>التصرف في التلاميذ</a>
+                        <a class="header" href="/studentmangement/StudentMangement" style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}>التصرف في التلاميذ</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const Teacher = () => {
                 <div class="ui centered card">
                     <div class="content">
                         
-                        <a class="header" href="/teacher/presence" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}> الحضور</a>
+                        <a class="header" href="/teacher/p/presence" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}> الحضور</a>
                     </div>
                 </div>
             </div>
@@ -51,14 +51,14 @@ const Teacher = () => {
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/timetable" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}>جدول أوقاتي</a>
+                        <a class="header" href="/teacher/t/timetable" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}>جدول أوقاتي</a>
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" href="/teacher/stat" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}>إحصائيّات</a>
+                        <a class="header" href="/teacher/t/stat" style={{ fontFamily:'Tajawal',marginLeft: '7rem' }}>إحصائيّات</a>
                     </div>
                 </div>
             </div>

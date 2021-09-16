@@ -25,6 +25,7 @@ import LoginAdmin from "./pages/Login/LoginAdmin";
 import LoginTeacher from "./pages/Login/LoginTeacher";
 import Timetablemanagement from './pages/Administration/TimeTableMangement/Timetablemanagement'
 import TeachPage from "./pages/Administration/TimeTableMangement/teacherInfo/TeachPage";
+import studentassignment from "./pages/Teacher/StudentMangement/studentassignment";
 
 const App = () => {
     return (
@@ -51,10 +52,11 @@ const App = () => {
 
                     <Route path="/teacher/:id" exact component={Teacher} />
                     <Route path="/infos/:id" exact component={PersonalInfoT} />
-                    <Route path="/teacher/presence" exact component={Presence} />
-                    <Route path="/teacher/stat" exact component={Statistics} />
-                    <Route path="/teacher/studentmangement" exact component={StudentMangement} />
-                    <Route path="/teacher/timetable" exact component={Timetable} />
+                    <Route path="/teacher/p/presence" exact component={Presence} />
+                    <Route path="/teacher/t/stat" exact component={Statistics} />
+                    <Route path="/studentmangement/StudentMangement" exact component={StudentMangement} />
+                    <Route path="/studentassignment/:id" exact component={studentassignment}/>
+                    <Route path="/teacher/t/timetable" exact component={Timetable} />
 
                     <Route path="/Login/LoginAdmin" exact component={LoginAdmin} />
                     <Route path="/Login/LoginTeacher" exact component={LoginTeacher} />
