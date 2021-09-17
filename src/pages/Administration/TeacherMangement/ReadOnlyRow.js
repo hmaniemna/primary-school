@@ -2,6 +2,7 @@ import React from 'react';
 import {TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 import { green } from '@material-ui/core/colors';
+import PersonalInfoT from '../../Teacher/PersonalInfos/PersonalInfo';
 const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) => 
 {
     return(
@@ -18,6 +19,7 @@ const ReadOnlyRow = ({val,handleEditClick,deleteTeacher,refreshPage}) =>
                     onClick={(event)=>{
                         handleEditClick(event,val)
                     }}
+                    
                 >
                     تعديل
                 </button> 

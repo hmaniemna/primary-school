@@ -3,19 +3,12 @@ import Axios from 'axios';
 import { useHistory } from 'react-router';
 import LoginTeacher from '../Login/LoginTeacher';
 import { Link } from "react-router-dom";
+import Popup from '../../components/Popup';
+import PersonalInfoT from './PersonalInfos/PersonalInfo';
 const Teacher = () => {
     const [id,setId] = useState("");
-  
-      const getTeacher = () => {
-        Axios.get(`http://localhost:3000/getTeacher/${id}`).then((response)=>{
-            setId(response.data[0].id_enseignant);
-        });
-      }
-      let history=useHistory()
-      const getInfos = (event) => {
-          console.log("siisi");
-        history.push(`/infos/${id}`);
-      };
+    const [openPopup,setOpenPopup]=useState(false)
+
               return(
     <div>
         <br/><br/><br/><br/><br/><br/><br/><br/>
@@ -23,9 +16,14 @@ const Teacher = () => {
             <div class="column">
                 <div class="ui centered card">
                     <div class="content">
-                        <a class="header" onClick={(e)=>{
-                            getTeacher()
-                            getInfos(e)}}  style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}  > المعلومات الشّخصيّة</a>
+                        <div
+                            class="header" 
+                            href="/infos/:id" 
+                            style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}  
+                            onClick={()=> {setOpenPopup(true)}}
+                        > 
+                            المعلومات الشّخصيّة
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +60,13 @@ const Teacher = () => {
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>  
+        <Popup
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+        >
+            <PersonalInfoT setOpenPopup={setOpenPopup}/>
+        </Popup>     
 
     </div>
 )

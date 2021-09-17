@@ -8,8 +8,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import ReadOnlyRowT from './ReadOnlyRowT';
-import EditableRowT from './EditableRowT';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -35,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const PersonalInfoT = () => {
+const PersonalInfoT = (props) => {
   const classes = useStyles();
   const [id,setId] = useState(null);
+  const {setOpenPopup}=props;
   const [teacherList,setTeacherList] = useState({
     id:"",
     firstname: "",
@@ -50,15 +49,22 @@ const PersonalInfoT = () => {
     setTeacherList({ ...teacherList, [e.target.name]: e.target.value });
   };
   useEffect(()=>{
-    Axios.get(`http://localhost:3000/getTeacher/${id}}`).then((response)=>{
+    Axios.get(`http://localhost:3000/getTeacher/`).then((response)=>{
       console.log('??');
       console.log(id)
+      console.log(response)
       setTeacherList(response.data);
     });
   },[]);
-  const updateTeacher = (val) => {
+  /*const updateTeacher = (val) => {
     Axios.put(`http://localhost:3000/teachers/${val.id_enseignant}`, teacherList)
-  };
+  };*/
+  /*useEffect(()=>{
+    Axios.get("http://localhost:3000/getTeachers").then((response)=>{
+      setTeacherList(response.data)
+      console.log(response.data)
+    })
+  },[])*/
 
   
   function refreshPage() {
@@ -83,11 +89,10 @@ const PersonalInfoT = () => {
           name="firstname"
           autoComplete="firstname"
           autoFocus
-          value={firstname}
+          defaultvalue="salma"
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          onChange={e =>{ onInputChange(e);
-          console.log(id);}}  
+          
         />
         <TextField
           className=""
@@ -99,9 +104,9 @@ const PersonalInfoT = () => {
           type="lastname"
           id="lastname"
           autoComplete="lastname"
+          
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          onChange={e => onInputChange(e)}
        />
         <TextField
           className=""
@@ -113,9 +118,13 @@ const PersonalInfoT = () => {
           type="username"
           id="username"
           autoComplete="username"
+          
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          onChange={e => onInputChange(e)}  
+          onChange={e => {
+            onInputChange(e)
+            console.log(username)
+          }}  
        />
 
         <TextField
@@ -127,16 +136,19 @@ const PersonalInfoT = () => {
           label="كلمة العبور"
           type="password"
           id="password"
+          
           autoComplete="current-password"
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
-          inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
-          onChange={e => onInputChange(e)}   
+          inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}  
         />
 
         <br/><br/>
         </form>
         <button type="button" class="ui blue basic button"  
-                    onClick={updateTeacher}
+                    onClick={(e)=>{
+                      console.log(e)
+                      refreshPage()
+                    }}
                 >
                     تعديل
                 </button> 

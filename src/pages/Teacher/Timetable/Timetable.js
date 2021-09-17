@@ -10,9 +10,6 @@ import {
   Scheduler,
   WeekView,
   Appointments,
-  AppointmentForm,
-  AppointmentTooltip,
-  DragDropProvider,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import {appointments} from '../../Administration/TimeTableMangement/demo-data/appointments'
 
