@@ -1,110 +1,106 @@
-//import Chart from 'chart.js'
-/*window.chart = require('chart.js');
-let labels1 = ['YES', 'YES BUT IN GREEN'];
-let data1 = [69, 31];
-let colors1 = ['#49A9EA', '#36CAAB'];
+import React from 'react';
+import './Statistics.css';
+import {BarChart, Bar, Legend, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
-let myDoughnutChart = document.getElementById("myChart").getContext('2d');
-
-let chart1 = new Chart(myDoughnutChart, {
-    type: 'doughnut',
-    data: {
-        labels: ['YES', 'YES BUT IN GREEN'],
-        datasets: [ {
-            data: [69, 31],
-            backgroundColor: ['#49A9EA', '#36CAAB']
-        }]
-    },
-    options: {
-        title: {
-            text: "Do you like doughnuts?",
-            display: true
-        }
-    }
-});
-
-let labels2 = ['American Airlines Group', 'Ryanair', 'China Southern Airlines', 'Lufthansa Group'];
-let data2 = [199.6, 130.3, 126.3, 130];
-let colors2 = ['#49A9EA', '#36CAAB', '#34495E', '#B370CF'];
-
-let myChart2 = document.getElementById("myChart2").getContext('2d');
-
-let chart2 = new Chart(myChart2, {
-    type: 'bar',
-    data: {
-        labels: labels2,
-        datasets: [ {
-            data: data2,
-            backgroundColor: colors2
-        }]
-    },
-    options: {
-        title: {
-            text: "Number of passengers carried in 2017 (in mio.)",
-            display: true
-        },
-        legend: {
-          display: false
-        }
-    }
-});
+import Flip from 'react-reveal/Flip';
 
 
-let labels3 = ['Attack', 'Defense', 'Passing', 'Tackle', 'Speed'];
-let myChart3 = document.getElementById("myChart3").getContext('2d');
 
-let chart3 = new Chart(myChart3, {
-    type: 'radar',
-    data: {
-        labels: labels3,
-        datasets: [
-          {
-            label: 'Messi',
-            fill: true,
-            backgroundColor: "rgba(179, 181, 198, 0.2)",
-            borderColor: "rgba(179, 181, 198, 1)",
-            pointBorderColor: "#fff",
-            pointBackgroundColor: "rgba(179, 181, 198, 1)",
-            data: [50, 12, 55, 7, 29]
-          },
-          {
-            label: 'Ronaldo',
-            fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgba(255, 99, 132, 1)",
-            pointBorderColor: "#fff",
-            pointBackgroundColor: "rgba(255, 99, 132, 1)",
-            data: [51, 10, 32, 20, 44]
-          }
-        ]
-    },
-    options: {
-        title: {
-            text: "Skills",
-            display: true
-        }
-    }
-});
 
-let labels4 = ['Germany', 'France', 'UK', 'Italy', 'Spain', 'Others(23)'];
-let data4 = [83, 67, 66, 61, 47, 187];
-let colors4 = ['#49A9EA', '#36CAAB', '#34495E', '#B370CF', '#AC5353', '#CFD4D8'];
+const Statistics = () => {
+    
+    
+      const data2 = [
+       
+        { name: 'العدد', إناث: 14,ذكور:12,amt:30 },
+        { name: 'نتائج متميزة فوق 15', إناث: 10,ذكور:8,amt:100 },
+        { name: 'نتائج اكثر من المتوسط ', إناث: 2,ذكور:4,amt:100 },
+        { name: 'نتائج متوسطة ', إناث: 2,ذكور:4,amt:100 },
+        { name: 'نتائج ضعيفة   ', إناث: 2,ذكور:4,amt:100 },
+      ];
 
-let myChart4 = document.getElementById("myChart4").getContext('2d');
+      const data1 = [
+       
+        { name: 'الأثنين ', إناث: 16,ذكور:12,amt:30 },
+        { name: 'الثلاثاء  ', إناث: 16,ذكور:12,amt:100 },
+        { name: 'الأربعاء ', إناث: 17,ذكور:12,amt:100 },
+        { name: 'الخميس  ',إناث: 14,ذكور:12,amt:100 },
+        { name: 'الجمعة ', إناث: 14,ذكور:13,amt:100 },
+        { name: ' السبت ', إناث: 14,ذكور:12,amt:30 }
+      ];
+      
+    
+    
+    return (
+       <div className="stat">
+          <h1 className='static'>الإحصائيات          </h1>
+          <Flip  right duration={2000}>
+          <h1 className="classe1"> النتائج</h1>
+          </Flip >
+           
+           <div className="pie1">
+           
+         <>
+         <BarChart
+         width={900}
+         height={250}
+         data={data2}
+         margin={{
+           
+           left: 150,
+           
+         }}
+       >
+         <CartesianGrid strokeDasharray="3 3" />
+         <XAxis dataKey="name" />
+         <YAxis />
+         <Tooltip />
+         <Legend />
+         <Bar dataKey="ذكور" fill="#153f65 " />
+         <Bar dataKey="إناث" fill="#c1e3ff " />
+       </BarChart>
+       </>
+         </div>
+         <Flip right duration={2000}>
+          
+      
 
-let chart4 = new Chart(myChart4, {
-    type: 'pie',
-    data: {
-        labels: labels4,
-        datasets: [ {
-            data: data4,
-            backgroundColor: colors4
-        }]
-    },
-    options: {
-        title: {
-            text: "Population of the European Union (in mio)",
-            display: true
-        }
-    }
-});*/
+         <h1 className="classe2">الحضور </h1>
+         </Flip>
+           
+           <div className="pie2">
+           
+         <BarChart
+         width={900}
+         height={250}
+         data={data1}
+         margin={{
+           
+           left: 150,
+          top:25,
+           
+         }}
+       >
+         <CartesianGrid strokeDasharray="3 3" />
+         <XAxis dataKey="name" />
+         <YAxis />
+         <Tooltip />
+         <Legend />
+         <Bar dataKey="ذكور" fill="#153f65 " />
+         <Bar dataKey="إناث" fill="#c1e3ff " />
+       </BarChart>
+       
+          
+           
+           </div>
+         
+
+         
+        
+       
+       
+       </div>
+    );
+};
+
+export default Statistics;

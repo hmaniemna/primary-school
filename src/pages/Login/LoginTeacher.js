@@ -11,7 +11,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Teacher from '../Teacher/Teacher';
 import Error from './error';
 
 
@@ -51,13 +50,12 @@ const LoginTeacher = () => {
          if(response.data.message) {
           setTest(false)
           setLoginstatus(response.data.message)
-          console.log("hey");
+          alert('هذا المعلم غير مسجل');
          } else {
           console.log(response.data[0].id_enseignant);
           setTest(true)
           setLoginstatus(response.data[0].id_enseignant);
           setId(response.data[0].id_enseignant);
-          //console.log("??")
          }
         
        });

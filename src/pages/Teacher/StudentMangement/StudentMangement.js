@@ -1,38 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import Axios from 'axios';
 import useTable from '../../../components/useTable';
-import { TableBody, TableRow,TableCell } from '@material-ui/core';
+import { TableBody } from '@material-ui/core';
 import Popup from '../../../components/Popup';
 import AddStudent from './AddStudent';
 import EditableRowStudent from './EditableRowStudent';
 import ReadOnlyRowStudent from './ReadOnlyRowStudent'
-
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  }, 
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3)
-  },
-  newButton:{
-      position:'absolute',
-      right:'10px'
-  }
-}));
 
 const headCells=[
     {id:'actions',label:'أجراءات'},
@@ -45,8 +19,6 @@ const headCells=[
 ]
 
 const StudentMangement = () => {
-  const classes = useStyles();
-  const [id,setID]=useState(''); 
   const [editStudentId,setEditStudentId] = useState(null);
   const [editFormData,setEditFormData]=useState({
     id:0,

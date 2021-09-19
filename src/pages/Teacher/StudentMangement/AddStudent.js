@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddStudent = (props) => {
-    const classes = useStyles();
-    const [id,setID]=useState('');
+  const classes = useStyles();
+  const [id,setID]=useState('');
   const [firstName,setFirstName] = useState('');
   const [lastName,setLastName] = useState('');
   const [gender,setGender] = useState('female');
@@ -56,10 +56,6 @@ const AddStudent = (props) => {
     Axios.post("http://localhost:3000/api/insertStudent",{
      id:id,firstname:firstName,lastname:lastName,gender:gender,birthdate:birthdate,inscri:inscri
   });
-  
-    /*setStudentList([...studentList,
-      {id:id,firstName:firstName,lastName:lastName,gender:gender,birthdate:birthdate,inscri:inscri},
-    ]); */
   };
 
   function refreshPage() {
@@ -176,7 +172,6 @@ const AddStudent = (props) => {
       <Box mt={8}>
       </Box>
     </Container>
-
   );
 }
 

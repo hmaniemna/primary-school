@@ -3,7 +3,6 @@ import {TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
 
 import Popup from '../../../components/Popup';
-import DeleteC from './DeleteC/DeleteC';
 const ReadOnlyRow = ({val,handleEditClick,deleteClass,refreshPage,openPopup,setOpenPopup}) => 
 {
     return(
@@ -33,7 +32,6 @@ const ReadOnlyRow = ({val,handleEditClick,deleteClass,refreshPage,openPopup,setO
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
             >
-                <DeleteC setOpenPopup={setOpenPopup}/>
             </Popup> 
         </TableRow>
     );

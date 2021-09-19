@@ -10,7 +10,7 @@ const ReadOnlyRow = ({val,handleEditClick,deleteSubject,refreshPage,openPopup,se
                 <button type="button" class="ui blue basic button"  
                       onClick={(event)=>{
                         handleEditClick(event,val)
-                    }}
+                        }}
                 >
                     تعديل
                 </button> 

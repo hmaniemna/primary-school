@@ -1,8 +1,6 @@
 
 import React,{useState,useEffect} from 'react';
 import Axios from 'axios';
-import TeacherManagement from '../TeacherMangement';
-//import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -15,19 +13,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Navbar,NavDropdown,Nav } from "react-bootstrap"
-
 import './AddT.css'
-
-      
-
-/*function RadioButtonsGroup() {
-    const [value, setValue] = React.useState('female');
-  
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
-}*/
 
 
 

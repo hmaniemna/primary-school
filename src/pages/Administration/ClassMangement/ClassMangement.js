@@ -3,8 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Axios from 'axios';
 import useTable from '../../../components/useTable';
-import { TableBody, TableRow,TableCell } from '@material-ui/core';
-import { NavItem } from 'react-bootstrap';
+import { TableBody } from '@material-ui/core';
 import Popup from '../../../components/Popup';
 import AddC from './AddC/AddC'
 import EditableRow from './EditableRowC';
@@ -86,15 +85,6 @@ const ClassMangement = () => {
       setClassList(response.data)
     })
   },[])
-
-  /*const submitClass=()=>{
-    Axios.post('http://localhost:3000/api/insert',{
-     id:id,name:name,level:level,number:number
-    }).then(()=>{
-
-      alert('Succ insert!')
-    })
-  }*/
 
   const handleEditClick = (event,val) => {
     event.preventDefault();

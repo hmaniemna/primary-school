@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router';
-import { useAlert } from 'react-alert'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -51,6 +50,7 @@ const LoginAdmin = () => {
          if(response.data.message) {
           setTest(false)
           setLoginstatus(response.data.message)
+          alert('هذا المسؤول غير مسجل');
          } else {
           setTest(true)
           setLoginstatus(response.data[0].email)   
@@ -74,7 +74,7 @@ const LoginAdmin = () => {
     if(test){
       history.push('/admin')
     }else{
-      alert('non');
+      <Error/>
     }
   }
 
@@ -139,7 +139,6 @@ const LoginAdmin = () => {
           </Grid>
         </form>
       </div>
-      <h1>{loginstatus}</h1>
     </Container>
   );
 }

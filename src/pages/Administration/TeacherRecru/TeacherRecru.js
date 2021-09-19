@@ -1,21 +1,13 @@
 
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import Axios from 'axios';
-
-//import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import { Navbar,NavDropdown,Nav } from "react-bootstrap"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -48,12 +40,6 @@ const TeacherRecru = (props) => {
   const [idE,setIdE] = useState('');
   const [idC,setIdC] = useState('');
   const [idS,setIdS] = useState('');
-  const [teacherList,setTeacherList] = useState([]);
- /* useEffect(()=>{
-    Axios.get("http://localhost:3000/getTeachers").then((response)=>{
-      setTeacherList(response.data);
-    });
-  },[]); */
   const getIdteacher = (teacherLogin) => {
     Axios.get("http://localhost:3000/getIdteacher",{
       login:teacherLogin}).then((response,id1)=>{

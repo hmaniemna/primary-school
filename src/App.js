@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from "./components/Header/Header";
@@ -27,6 +27,7 @@ import Timetablemanagement from './pages/Administration/TimeTableMangement/Timet
 import TeachPage from "./pages/Administration/TimeTableMangement/teacherInfo/TeachPage";
 import studentassignment from "./pages/Teacher/StudentMangement/studentassignment";
 
+
 const App = () => {
     return (
     <div>
@@ -47,7 +48,7 @@ const App = () => {
                     <Route path="/admin/teacherrecru" exact component={TeacherRecru} />
                     <Route path="/admin/timetablemanagemnet/:id" exact component={Timetablemanagement} />
                     <Route path="/admin/teachertimetable" exact component={TeachPage}/>
-                    <Route path="/admin/tools" exact component={Toolbox} />
+                    <Route path="/admin/tools" exact component={Statistics}/>
 
 
                     <Route path="/teacher/:id" exact component={Teacher} />

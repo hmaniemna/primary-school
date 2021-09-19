@@ -1,9 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { Classes } from 'jss';
-import { TableBody, TableRow,TableCell } from '@material-ui/core';
+import { TableRow,TableCell } from '@material-ui/core';
 import { NavItem } from 'react-bootstrap';
-const EditableRow = ({editFormData,setNewFirstname,setNewLastname,setNewGender,setNewBirthDate,val,refreshPage,updateStudentFirstname,updateStudentLastname,updateStudentGender,updateStudentBirthdate,newStudentList,handleCancelClick}) => {
+const EditableRow = ({editFormData,setNewFirstname,setNewLastname,setNewGender,val,refreshPage,updateStudentFirstname,updateStudentLastname,updateStudentGender,updateStudentBirthdate,newStudentList,handleCancelClick}) => {
         return (
                 <TableRow key={NavItem.id_classe}>
                         <TableCell>

@@ -1,12 +1,7 @@
-import React,{useState,useEffect} from 'react';
-import Axios from 'axios';
-import { useHistory } from 'react-router';
-import LoginTeacher from '../Login/LoginTeacher';
-import { Link } from "react-router-dom";
+import React,{useState} from 'react';
 import Popup from '../../components/Popup';
 import PersonalInfoT from './PersonalInfos/PersonalInfo';
 const Teacher = () => {
-    const [id,setId] = useState("");
     const [openPopup,setOpenPopup]=useState(false)
 
               return(
@@ -20,7 +15,9 @@ const Teacher = () => {
                             class="header" 
                             href="/infos/:id" 
                             style={{ fontFamily:'Tajawal',marginLeft: '5rem' }}  
-                            onClick={()=> {setOpenPopup(true)}}
+                            onClick={()=> {
+                                setOpenPopup(true) 
+                            }}
                         > 
                             المعلومات الشّخصيّة
                         </div>

@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -44,6 +41,13 @@ const PersonalInfoT = (props) => {
     username: "",
     password: ""
   });
+  const [editTeacherId,setEditTeacherId] = useState(null);
+  const [editFormData,setEditFormData]=useState({
+    firstname: "haha",
+    lastname: "",
+    username: "",
+    password: ""
+  })
   const { firstname,lastname, username,password } = teacherList;
   const onInputChange = e => {
     setTeacherList({ ...teacherList, [e.target.name]: e.target.value });
@@ -56,6 +60,20 @@ const PersonalInfoT = (props) => {
       setTeacherList(response.data);
     });
   },[]);
+
+  const handleEditClick = (event,val) => {
+    event.preventDefault();
+    setEditTeacherId(val.id_enseignant);
+
+    const formValues={
+      firstname:val.prenom,
+      lastname:val.nom,  
+      username:val.login,
+      password:val.mdp 
+    }
+    setEditFormData(formValues);
+  };
+
   /*const updateTeacher = (val) => {
     Axios.put(`http://localhost:3000/teachers/${val.id_enseignant}`, teacherList)
   };*/
@@ -89,7 +107,7 @@ const PersonalInfoT = (props) => {
           name="firstname"
           autoComplete="firstname"
           autoFocus
-          defaultvalue="salma"
+          defaultValue={editFormData.firstname}
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           
@@ -104,7 +122,7 @@ const PersonalInfoT = (props) => {
           type="lastname"
           id="lastname"
           autoComplete="lastname"
-          
+          defaultValue={editFormData.lastname}
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
        />
@@ -118,7 +136,7 @@ const PersonalInfoT = (props) => {
           type="username"
           id="username"
           autoComplete="username"
-          
+          defaultValue={editFormData.username}
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}
           onChange={e => {
@@ -136,8 +154,8 @@ const PersonalInfoT = (props) => {
           label="كلمة العبور"
           type="password"
           id="password"
-          
           autoComplete="current-password"
+          defaultValue={editFormData.password}
           InputLabelProps={{style: {fontFamily:'Tajawal'}}}
           inputProps={{min: 0, style: { textAlign: 'right',fontFamily:'Tajawal' }}}  
         />
@@ -147,7 +165,7 @@ const PersonalInfoT = (props) => {
         <button type="button" class="ui blue basic button"  
                     onClick={(e)=>{
                       console.log(e)
-                      refreshPage()
+                      setOpenPopup(false)
                     }}
                 >
                     تعديل
